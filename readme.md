@@ -1,6 +1,6 @@
 # Peter Horne's .dotfiles
 
-These are my personal dotfiles. I manage them with a python script called dotfiles.
+These are my personal dotfiles. They are with [dotfiles](https://github.com/jbernard/dotfiles).
 
 Get started in 4 steps:
 
