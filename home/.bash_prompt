@@ -1,0 +1,56 @@
+# awesome bash prompt incl. git status
+# (depends on .bash_solarized)
+# 
+# forked from Nicolas Gallagher's dotfiles:
+#Â#https://github.com/necolas/dotfiles/blob/master/bash/bash_prompt
+
+# example:
+# peter at host in ~/.dotfiles on master
+# $
+
+user="\[${RESET}${ORANGE}\]"
+host="\[${RESET}${YELLOW}\]"
+path="\[${RESET}${GREEN}\]"
+chars="\[${RESET}${BASE00}\]"
+branch="${CYAN}"
+
+if [[ "$SSH_TTY" ]]; then
+	# connected via ssh
+	host="\[${BOLD}${RED}\]"
+elif [[ "$USER" == "root" ]]; then
+	# logged in as root
+	user="\[${BOLD}${RED}\]"
+fi
+
+# git status
+# adapted from: https://github.com/cowboy/dotfiles/
+function prompt_git() {
+	local status output flags
+	status="$(git status 2>/dev/null)"
+	[[ $? != 0 ]] && return;
+	output="$(echo "$status" | awk '/# Initial commit/ {print "(init)"}')"
+	[[ "$output" ]] || output="$(echo "$status" | awk '/# On branch/ {print $4}')"
+	[[ "$output" ]] || output="$(git branch | perl -ne '/^\* (.*)/ && print $1')"
+	flags="$(
+	echo "$status" | awk 'BEGIN {r=""} \
+		/^# Changes to be committed:$/        {r=r "+"}\
+		/^# Changes not staged for commit:$/  {r=r "!"}\
+		/^# Untracked files:$/                {r=r "?"}\
+		END {print r}'
+	)"
+	if [[ "$flags" ]]; then
+		output="$output[$flags]"
+	fi
+	echo -ne "${BASE00} on ${branch}${output}"
+}
+
+# build the prompt
+PS1="\n" # Newline
+PS1+="${user}\u" # Username
+PS1+="${chars} at " # at
+PS1+="${host}\h" # Host
+PS1+="${chars} in " # in
+PS1+="${path}\w" # Working directory
+PS1+="\$(prompt_git)" # Git details
+PS1+="\n" # Newline
+PS1+="${chars}\$ \[${RESET}\]" # $ (and reset color)
