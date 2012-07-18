@@ -1,4 +1,3 @@
-source ~/.bash_solarized
 source ~/.bash_prompt
 
 # colours
