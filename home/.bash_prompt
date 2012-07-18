@@ -2,24 +2,24 @@
 # (depends on .bash_solarized)
 # 
 # forked from Nicolas Gallagher's dotfiles:
-#Â#https://github.com/necolas/dotfiles/blob/master/bash/bash_prompt
+# #https://github.com/necolas/dotfiles/blob/master/bash/bash_prompt
 
 # example:
 # peter at host in ~/.dotfiles on master
 # $
 
-user="\[${RESET}${ORANGE}\]"
-host="\[${RESET}${YELLOW}\]"
-path="\[${RESET}${GREEN}\]"
-chars="\[${RESET}${BASE00}\]"
-branch="${CYAN}"
+user="\[$(tput sgr0)$(tput setaf 1)\]"
+host="\[$(tput sgr0)$(tput setaf 3)\]"
+path="\[$(tput sgr0)$(tput setaf 2)\]"
+chars="\[$(tput sgr0)$(tput setaf 8)\]"
+branch="$(tput setaf 4)"
 
 if [[ "$SSH_TTY" ]]; then
 	# connected via ssh
-	host="\[${BOLD}${RED}\]"
+	host="\[$(tput bold)\]"
 elif [[ "$USER" == "root" ]]; then
 	# logged in as root
-	user="\[${BOLD}${RED}\]"
+	user="\[$(tput bold)\]"
 fi
 
 # git status
