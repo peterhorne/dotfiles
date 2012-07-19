@@ -19,7 +19,7 @@ PATH=/usr/local/share/python:$PATH
 # enable virtualenvwrapper
 export WORKON_HOME=$HOME/.virtualenvs
 export PROJECT_HOME=$HOME/projects
-source /usr/local/bin/virtualenvwrapper.sh
+source /usr/local/share/python/virtualenvwrapper.sh
 
 # enable rvm
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
