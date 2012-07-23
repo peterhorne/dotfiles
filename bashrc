@@ -11,7 +11,7 @@ alias tmux="TERM=screen-256color-bce tmux"
 alias git=hub
 
 # enable homebrew
-PATH=/usr/local/bin:$PATH
+PATH=/usr/local/bin:/usr/local/sbin:$PATH
 
 # enable homebrew python
 PATH=/usr/local/share/python:$PATH
