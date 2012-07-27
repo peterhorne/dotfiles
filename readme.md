@@ -1,6 +1,6 @@
 # Peter Horne's .dotfiles
 
-These are my personal dotfiles. They are with [dotfiles](https://github.com/jbernard/dotfiles).
+These are my personal dotfiles. They are managed using [dotfiles](https://github.com/jbernard/dotfiles).
 
 Get started in 3 steps:
 

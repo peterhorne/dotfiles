@@ -44,8 +44,7 @@ function prompt_git() {
 }
 
 # build the prompt
-PS1="\n" # Newline
-PS1+="${user}\u" # Username
+PS1="${user}\u" # Username
 PS1+="${chars} at " # at
 PS1+="${host}\h" # Host
 PS1+="${chars} in " # in
