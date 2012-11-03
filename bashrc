@@ -18,7 +18,7 @@ PATH=/usr/local/share/python:$PATH
 
 # enable virtualenvwrapper
 export WORKON_HOME=$HOME/.virtualenvs
-export PROJECT_HOME=$HOME/projects
+export PROJECT_HOME=$HOME/src
 source /usr/local/share/python/virtualenvwrapper.sh
 
 # enable rvm
