@@ -3,10 +3,11 @@ ZSH_THEME="agnoster-custom"
 plugins=(git autojump osx travis)
 
 source $ZSH/oh-my-zsh.sh
+unsetopt autonamedirs
+unsetopt correct_all # Disable zsh autocorrect
+
 source $HOME/.path
 source $HOME/.exports
-
-unsetopt correct_all # Disable zsh autocorrect
 
 # Load RVM into a shell session *as a function*
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
