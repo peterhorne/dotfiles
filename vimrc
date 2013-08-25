@@ -12,11 +12,14 @@ Bundle 'chriskempson/base16-vim'
 set background=dark
 colorscheme base16-ocean
 
+" Highlight current line
+set cul
+
 " Relative line numbers
 set rnu
 
-" Fast saving
-nmap <leader>w :w!<cr>
+" Use semicolon instead of colon
+nore ; :
 
 " Enable syntax highlighting
 syntax enable
@@ -37,6 +40,23 @@ set nobackup
 set nowb
 set noswapfile
 
-" Makes search act like search in modern browsers
-set incsearch
+set incsearch       " Makes search act like search in modern browsers
+set ignorecase      " Ignore case when using a search pattern
+set smartcase       " Override 'ignorecase' when pattern
+                    " has upper case character
+
+" Number of lines to show around cursor
+set scrolloff=3
+
+" Navigate splits with ctrl-jklh
+map <c-j> <c-w>j
+map <c-k> <c-w>k
+map <c-l> <c-w>l
+map <c-h> <c-w>h
+
+" Resize splits with alt-jklh
+map ˚ <C-W>-
+map ∆ <C-W>+
+map ˙ <C-W>>
+map ¬ <C-W><
 
