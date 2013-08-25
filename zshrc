@@ -40,3 +40,4 @@ function phpjson() {
 function lipsum() {
     php -r "echo json_decode(file_get_contents('http://lipsum.com/feed/json?amount=1'))->feed->lipsum;" | pbcopy
 }
+
