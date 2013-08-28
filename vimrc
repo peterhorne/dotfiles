@@ -7,10 +7,11 @@ call vundle#rc()
 
 Bundle 'gmarik/vundle'
 Bundle 'chriskempson/base16-vim'
+Bundle 'kien/ctrlp.vim'
 
 " Theme
 set background=dark
-colorscheme base16-ocean
+colorscheme base16-tomorrow
 
 " Highlight current line
 set cul

@@ -9,6 +9,9 @@ unsetopt correct_all # Disable zsh autocorrect
 source $HOME/.path
 source $HOME/.exports
 
+# Base16
+source $HOME/.base16-shell/base16-tomorrow.dark.sh
+
 # Load RVM into a shell session *as a function*
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
