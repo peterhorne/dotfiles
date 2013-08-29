@@ -11,7 +11,7 @@ Bundle 'kien/ctrlp.vim'
 
 " Theme
 set background=dark
-colorscheme base16-tomorrow
+colorscheme base16-solarized
 
 " Highlight current line
 set cul
