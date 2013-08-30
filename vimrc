@@ -8,10 +8,14 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 Bundle 'chriskempson/base16-vim'
 Bundle 'kien/ctrlp.vim'
+Bundle 'airblade/vim-gitgutter'
 
 " Theme
 set background=dark
 colorscheme base16-solarized
+
+" Enable syntax highlighting
+syntax enable
 
 " Highlight current line
 set cul
@@ -22,8 +26,8 @@ set rnu
 " Use semicolon instead of colon
 nore ; :
 
-" Enable syntax highlighting
-syntax enable
+" Yank and paste using system clipboard
+set clipboard=unnamed
 
 " Use spaces instead of tabs
 set expandtab
