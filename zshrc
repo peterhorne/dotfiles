@@ -12,10 +12,6 @@ source $HOME/.exports
 # Base16
 source $HOME/.base16-shell/base16-solarized.dark.sh
 
-# Use entire line when searching history
-bindkey '\e[A' history-beginning-search-backward
-bindkey '\e[B' history-beginning-search-forward
-
 # Load RVM into a shell session *as a function*
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
