@@ -11,8 +11,8 @@ Bundle 'kien/ctrlp.vim'
 Bundle 'airblade/vim-gitgutter'
 
 " Theme
-set background=dark
-colorscheme base16-solarized
+" set background=dark
+" colorscheme base16-solarized
 
 " Enable syntax highlighting
 syntax enable
