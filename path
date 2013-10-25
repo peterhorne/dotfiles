@@ -3,4 +3,5 @@ export PATH=$PATH:$(brew --prefix josegonzalez/php/php54)/bin
 export PATH=$PATH:$(brew --prefix ruby)/bin
 export PATH=$PATH:/usr/local/share/npm/bin
 export PATH=$PATH:$HOME/.rvm/bin
+export PATH=$PATH:$(brew --prefix)/lib/python2.7/site-packages
 
