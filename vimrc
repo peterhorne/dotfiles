@@ -18,7 +18,7 @@ Bundle 'airblade/vim-gitgutter'
 syntax enable
 
 " Highlight current line
-set cul
+" set cul
 
 " Relative line numbers
 set rnu
@@ -49,6 +49,9 @@ set incsearch       " Makes search act like search in modern browsers
 set ignorecase      " Ignore case when using a search pattern
 set smartcase       " Override 'ignorecase' when pattern
                     " has upper case character
+
+" Fix backspace
+set backspace=indent,eol,start
 
 " Number of lines to show around cursor
 set scrolloff=3
