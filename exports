@@ -12,3 +12,6 @@ export SHOP_TOQUE_PATH=/Users/peter/src/musicglue/shop-toque
 #export JRUBY_OPTS="--1.9 -J-client -J-d32"
 
 export EDITOR="mvim -f"
+
+export PROJECT_HOME="/Users/peter/src/"
+
