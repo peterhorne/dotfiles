@@ -1,6 +1,7 @@
 ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="agnoster-custom"
-plugins=(git autojump osx travis musicglue)
+DISABLE_AUTO_UPDATE="true"
+plugins=(git autojump osx travis musicglue zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 unsetopt autonamedirs
