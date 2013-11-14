@@ -1,0 +1,23 @@
+[user]
+	name = Peter Horne
+	email = peter@musicglue.com
+[core]
+    excludesfile = /Users/peter/.gitignore
+    editor = $EDITOR
+[color]
+	ui = true
+[push]
+	default = simple
+[diff]
+	tool = Kaleidoscope
+[alias]
+	up = pull --rebase
+[alias]
+    bump = commit --allow-empty -m 'Bump commit'
+[alias]
+	lg = log --graph --oneline --decorate
+[alias]
+    sort-tag = "!git tag | gsort -V"
+[alias]
+    build = "!sh -c 'git checkout buildpack && git reset --hard \"$0\" && git push -f && git checkout -'"
+
