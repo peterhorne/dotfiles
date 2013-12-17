@@ -17,7 +17,7 @@
 [alias]
 	lg = log --graph --oneline --decorate
 [alias]
-    sort-tag = "!git tag | gsort -V"
+    tags = "!git tag | gsort -V"
 [alias]
-    build = "!sh -c 'git checkout buildpack && git reset --hard \"$0\" && git push -f && git checkout -'"
+    yesterday = "!git log --graph --all --since='day.before.yesterday.midnight' --until=midnight --author=\"$(git config user.name)\" --oneline --decorate"
 
