@@ -13,8 +13,9 @@ source $HOME/.exports
 # Base16
 source $HOME/.base16-shell/base16-solarized.dark.sh
 
-# Load RVM into a shell session *as a function*
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+# chruby
+source /usr/local/opt/chruby/share/chruby/chruby.sh
+source /usr/local/opt/chruby/share/chruby/auto.sh
 
 # Git shortcuts
 alias cpg='git rev-parse HEAD | tr -d "\n" | pbcopy'
