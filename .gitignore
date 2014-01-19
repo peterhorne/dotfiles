@@ -1,3 +1,4 @@
+local-exports
 vim/bundle
 !vim/bundle/vundle
 
