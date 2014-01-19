@@ -1,6 +1,5 @@
 [user]
 	name = Peter Horne
-	email = peter@musicglue.com
 [core]
     excludesfile = /Users/peter/.gitignore
     editor = $EDITOR
