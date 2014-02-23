@@ -1,4 +1,4 @@
-export PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin
+export PATH=./bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin
 export PATH=$PATH:$(brew --prefix josegonzalez/php/php54)/bin
 #export PATH=$PATH:$(brew --prefix ruby)/bin
 #export PATH=$PATH:/usr/local/share/npm/bin
