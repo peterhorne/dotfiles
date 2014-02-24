@@ -17,7 +17,6 @@ source $HOME/.base16-shell/base16-solarized.dark.sh
 # chruby
 [ -f /usr/local/opt/chruby/share/chruby/chruby.sh ] && source /usr/local/opt/chruby/share/chruby/chruby.sh
 [ -f /usr/local/opt/chruby/share/chruby/auto.sh ] && source /usr/local/opt/chruby/share/chruby/auto.sh
-chruby ruby-2.1
 
 # Git shortcuts
 alias cpg='git rev-parse HEAD | tr -d "\n" | pbcopy'
