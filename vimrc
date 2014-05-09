@@ -6,22 +6,24 @@ set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
 Bundle 'gmarik/vundle'
+Bundle 'scrooloose/nerdtree'
 Bundle 'chriskempson/base16-vim'
 Bundle 'kien/ctrlp.vim'
 Bundle 'airblade/vim-gitgutter'
+Bundle 'altercation/vim-colors-solarized'
 
 " Theme
-" set background=dark
-" colorscheme base16-solarized
+set background=dark
+colorscheme solarized
 
 " Enable syntax highlighting
 syntax enable
 
-" Highlight current line
-" set cul
+" Set font
+set guifont=Inconsolata\ LGC\ for\ Powerline:h12
 
-" Relative line numbers
-set rnu
+" Highlight current line
+set cul
 
 " Use semicolon instead of colon
 nore ; :
@@ -54,7 +56,7 @@ set smartcase       " Override 'ignorecase' when pattern
 set backspace=indent,eol,start
 
 " Number of lines to show around cursor
-set scrolloff=3
+set scrolloff=5
 
 " Navigate splits with ctrl-jklh
 map <c-j> <c-w>j
