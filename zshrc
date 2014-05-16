@@ -1,7 +1,7 @@
 ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="agnoster-custom"
 DISABLE_AUTO_UPDATE="true"
-plugins=(git autojump osx virtualenvwrapper zsh-syntax-highlighting)
+plugins=(git autojump osx virtualenvwrapper chruby zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 unsetopt autonamedirs
@@ -10,10 +10,6 @@ unsetopt correct_all # Disable zsh autocorrect
 source $HOME/.path
 [ -f $HOME/.local-exports ] && source $HOME/.local-exports
 source $HOME/.exports
-
-# chruby
-[ -f /usr/local/opt/chruby/share/chruby/chruby.sh ] && source /usr/local/opt/chruby/share/chruby/chruby.sh
-[ -f /usr/local/opt/chruby/share/chruby/auto.sh ] && source /usr/local/opt/chruby/share/chruby/auto.sh
 
 # autoenv
 [ -f /usr/local/opt/autoenv/activate.sh ] && source /usr/local/opt/autoenv/activate.sh
