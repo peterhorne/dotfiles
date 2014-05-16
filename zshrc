@@ -1,7 +1,7 @@
 ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="agnoster-custom"
 DISABLE_AUTO_UPDATE="true"
-plugins=(git autojump osx virtualenvwrapper chruby zsh-syntax-highlighting)
+plugins=(git github autojump osx virtualenvwrapper chruby zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 unsetopt autonamedirs
@@ -13,9 +13,6 @@ source $HOME/.exports
 
 # autoenv
 [ -f /usr/local/opt/autoenv/activate.sh ] && source /usr/local/opt/autoenv/activate.sh
-
-# hub
-alias git=hub
 
 # Git shortcuts
 alias cpg='git rev-parse HEAD | tr -d "\n" | pbcopy'
