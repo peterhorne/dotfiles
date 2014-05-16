@@ -25,6 +25,9 @@ set guifont=Inconsolata\ LGC\ for\ Powerline:h12
 " Highlight current line
 set cul
 
+" Line numbers
+set nu
+
 " Use semicolon instead of colon
 nore ; :
 
