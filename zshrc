@@ -11,9 +11,6 @@ source $HOME/.path
 [ -f $HOME/.local-exports ] && source $HOME/.local-exports
 source $HOME/.exports
 
-# Base16
-source $HOME/.base16-shell/base16-solarized.dark.sh
-
 # chruby
 [ -f /usr/local/opt/chruby/share/chruby/chruby.sh ] && source /usr/local/opt/chruby/share/chruby/chruby.sh
 [ -f /usr/local/opt/chruby/share/chruby/auto.sh ] && source /usr/local/opt/chruby/share/chruby/auto.sh
