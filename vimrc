@@ -7,9 +7,7 @@ call vundle#rc()
 
 Bundle 'gmarik/vundle'
 Bundle 'scrooloose/nerdtree'
-Bundle 'chriskempson/base16-vim'
 Bundle 'kien/ctrlp.vim'
-Bundle 'airblade/vim-gitgutter'
 Bundle 'altercation/vim-colors-solarized'
 
 " Theme
