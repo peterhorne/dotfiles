@@ -26,9 +26,6 @@ set cul
 " Line numbers
 set nu
 
-" Use semicolon instead of colon
-nore ; :
-
 " Yank and paste using system clipboard
 set clipboard=unnamed
 
