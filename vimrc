@@ -7,8 +7,12 @@ call vundle#rc()
 
 Bundle 'gmarik/vundle'
 Bundle 'scrooloose/nerdtree'
+Bundle 'scrooloose/nerdcommenter'
 Bundle 'kien/ctrlp.vim'
 Bundle 'altercation/vim-colors-solarized'
+Bundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+
+filetype plugin on
 
 " Theme
 set background=dark
@@ -19,6 +23,9 @@ syntax enable
 
 " Set font
 set guifont=Inconsolata\ LGC\ for\ Powerline:h12
+
+" Always show status bar (powerline)
+set laststatus=2
 
 " Enable mouse support (useful for resizing windows)
 set mouse=a
