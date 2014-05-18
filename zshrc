@@ -1,5 +1,5 @@
 ZSH=$HOME/.oh-my-zsh
-ZSH_THEME="agnoster-custom"
+ZSH_THEME="sorin-custom"
 DISABLE_AUTO_UPDATE="true"
 plugins=(autoenv autojump chruby git github osx zsh-syntax-highlighting)
 
