@@ -20,11 +20,17 @@ syntax enable
 " Set font
 set guifont=Inconsolata\ LGC\ for\ Powerline:h12
 
+" Enable mouse support (useful for resizing windows)
+set mouse=a
+
 " Highlight current line
 set cul
 
 " Line numbers
 set nu
+
+" Enable hidden buffers (navigate away from buffer with unsaved changes)
+set hidden
 
 " Yank and paste using system clipboard
 set clipboard=unnamed
@@ -36,8 +42,8 @@ set expandtab
 set shiftwidth=4
 set tabstop=4
 
-set ai "Auto indent
-set si "Smart indent
+set ai   "Auto indent
+set si   "Smart indent
 set wrap "Wrap lines
 
 " Turn backup off
@@ -45,10 +51,10 @@ set nobackup
 set nowb
 set noswapfile
 
-set incsearch       " Makes search act like search in modern browsers
-set ignorecase      " Ignore case when using a search pattern
-set smartcase       " Override 'ignorecase' when pattern
-                    " has upper case character
+set incsearch  " Makes search act like search in modern browsers
+set ignorecase " Ignore case when using a search pattern
+set smartcase  " Override 'ignorecase' when pattern
+               " has upper case character
 
 " Fix backspace
 set backspace=indent,eol,start
