@@ -75,9 +75,3 @@ map <c-k> <c-w>k
 map <c-l> <c-w>l
 map <c-h> <c-w>h
 
-" Resize splits with alt-jklh
-map ˚ <C-W>-
-map ∆ <C-W>+
-map ˙ <C-W>>
-map ¬ <C-W><
-
