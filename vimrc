@@ -75,3 +75,6 @@ map <c-k> <c-w>k
 map <c-l> <c-w>l
 map <c-h> <c-w>h
 
+" Configure Ctrl-P (show at top of window)
+let g:ctrlp_match_window='top,order:ttp,min:1,max:4,results:20'
+
