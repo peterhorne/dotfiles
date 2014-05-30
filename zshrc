@@ -1,7 +1,7 @@
 ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="sorin-custom"
 DISABLE_AUTO_UPDATE="true"
-plugins=(autoenv autojump chruby osx zsh-syntax-highlighting)
+plugins=(autojump chruby extract osx zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 unsetopt autonamedirs
@@ -18,4 +18,7 @@ alias cpgp='cpg && git push'
 alias open-html="sed -n -e '/<html>/,/<\/html>/ p' > /tmp/cli-output.html && open /tmp/cli-output.html"
 
 alias tree="tree -L 2 -C"
+
+# autoenv
+source /usr/local/opt/autoenv/activate.sh
 
