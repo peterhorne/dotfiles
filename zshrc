@@ -8,8 +8,8 @@ unsetopt autonamedirs
 unsetopt correct_all # Disable zsh autocorrect
 
 source $HOME/.path
-[ -f $HOME/.local-exports ] && source $HOME/.local-exports
 source $HOME/.exports
+[ -f $HOME/.local-exports ] && source $HOME/.local-exports
 
 # Git shortcuts
 alias cpg='git rev-parse HEAD | tr -d "\n" | pbcopy'
