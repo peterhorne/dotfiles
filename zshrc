@@ -15,10 +15,6 @@ source $HOME/.exports
 alias cpg='git rev-parse HEAD | tr -d "\n" | pbcopy'
 alias cpgp='cpg && git push'
 
-alias open-html="sed -n -e '/<html>/,/<\/html>/ p' > /tmp/cli-output.html && open /tmp/cli-output.html"
-
-alias tree="tree -L 2 -C"
-
 # autoenv
 source /usr/local/opt/autoenv/activate.sh
 
