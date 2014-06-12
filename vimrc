@@ -81,3 +81,6 @@ let g:ctrlp_match_window='top,order:ttp,min:1,max:4,results:20'
 " Add a space after NERDComments
 let NERDSpaceDelims=1
 
+" Toggle NERDTree with Ctrl-N
+map <C-n> :NERDTreeToggle<CR>
+
