@@ -7,16 +7,10 @@
 	ui = true
 [push]
 	default = simple
-[diff]
-	tool = Kaleidoscope
 [alias]
 	up = pull --rebase
 [alias]
     bump = commit --allow-empty -m 'Bump commit'
 [alias]
 	lg = log --graph --oneline --decorate
-[alias]
-    tags = "!git tag | gsort -V"
-[alias]
-    yesterday = "!git log --graph --all --since='day.before.yesterday.midnight' --until=midnight --author=\"$(git config user.name)\" --oneline --decorate"
 
