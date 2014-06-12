@@ -87,3 +87,9 @@ map <C-n> :NERDTreeToggle<CR>
 " Close vim if NERDTree is the only remaining open window
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
+" Simplify NERDtree
+let NERDTreeMinimalUI=1
+
+" Automatically delete buffers when deleting/renaming files in NERDTree
+let NERDTreeAutoDeleteBuffer=1
+
