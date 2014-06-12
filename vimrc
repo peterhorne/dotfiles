@@ -78,3 +78,6 @@ map <c-h> <c-w>h
 " Configure Ctrl-P (show at top of window)
 let g:ctrlp_match_window='top,order:ttp,min:1,max:4,results:20'
 
+" Add a space after NERDComments
+let NERDSpaceDelims=1
+
