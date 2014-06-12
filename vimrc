@@ -84,6 +84,9 @@ let NERDSpaceDelims=1
 " Toggle NERDTree with Ctrl-N
 map <C-n> :NERDTreeToggle<CR>
 
+" Find reveal file in NERDTree
+map <C-m> :NERDTreeFind<CR>
+
 " Close vim if NERDTree is the only remaining open window
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
