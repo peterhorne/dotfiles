@@ -104,3 +104,9 @@ let NERDTreeMinimalUI=1
 " Automatically delete buffers when deleting/renaming files in NERDTree
 let NERDTreeAutoDeleteBuffer=1
 
+" Map bidirectional easymotion find to `s`
+nmap s <Plug>(easymotion-s2)
+
+" Enable smartcase for easymotion
+let g:EasyMotion_smartcase = 1
+
