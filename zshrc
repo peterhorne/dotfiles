@@ -15,6 +15,9 @@ source $HOME/.exports
 alias cpg='git rev-parse HEAD | tr -d "\n" | pbcopy'
 alias cpgp='cpg && git push'
 
+# hub
+alias git=hub
+
 # autoenv
 source /usr/local/opt/autoenv/activate.sh
 
