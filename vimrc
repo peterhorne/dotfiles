@@ -76,11 +76,8 @@ map <c-l> <c-w>l
 map <c-h> <c-w>h
 
 " Ignore common files/dirs
-:set wildignore+=**/vendor/**
-:set wildignore+=**/cache/**
-
-" Configure Ctrl-P (show at top of window)
-let g:ctrlp_match_window='top,order:ttp,min:1,max:4,results:20'
+:set wildignore+=*/vendor/*
+:set wildignore+=*/cache/*
 
 " Show hidden files in Ctrl-P
 let g:ctrlp_show_hidden = 1
