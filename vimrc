@@ -52,6 +52,9 @@ set tabstop=4
 set ai   "Auto indent
 set si   "Smart indent
 set wrap "Wrap lines
+"
+"Highlight wrapped lines
+set showbreak=↪\ \ \ 
 
 " Turn backup off
 set nobackup
