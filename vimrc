@@ -12,6 +12,7 @@ Bundle 'kien/ctrlp.vim'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 Bundle 'Lokaltog/vim-easymotion'
+Bundle 'sjl/gundo.vim'
 
 filetype plugin on
 
@@ -109,4 +110,7 @@ nmap s <Plug>(easymotion-s2)
 
 " Enable smartcase for easymotion
 let g:EasyMotion_smartcase = 1
+
+" Map Gundo to U
+nnoremap U :GundoToggle<CR>
 
