@@ -10,7 +10,8 @@ Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'kien/ctrlp.vim'
 Bundle 'altercation/vim-colors-solarized'
-Bundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+" Bundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+Bundle 'bling/vim-airline'
 Bundle 'Lokaltog/vim-easymotion'
 Bundle 'sjl/gundo.vim'
 
@@ -26,7 +27,7 @@ syntax enable
 " Set font
 set guifont=Inconsolata\ LGC\ for\ Powerline:h12
 
-" Always show status bar (powerline)
+" Always show status bar
 set laststatus=2
 
 " Enable mouse support (useful for resizing windows)
@@ -116,4 +117,17 @@ nnoremap U :GundoToggle<CR>
 
 " Display Gundo preview pane under current windows
 let g:gundo_preview_bottom=1
+
+" Use old vim-powerline symbols for airline
+if !exists('g:airline_symbols')
+  let g:airline_symbols = {}
+endif
+
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_sep = ''
+let g:airline_right_alt_sep = ''
+let g:airline_symbols.branch = ''
+let g:airline_symbols.readonly = ''
+let g:airline_symbols.linenr = ''
 
