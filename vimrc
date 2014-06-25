@@ -114,3 +114,6 @@ let g:EasyMotion_smartcase = 1
 " Map Gundo to U
 nnoremap U :GundoToggle<CR>
 
+" Display Gundo preview pane under current windows
+let g:gundo_preview_bottom=1
+
