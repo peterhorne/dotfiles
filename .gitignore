@@ -1,4 +1,4 @@
 local-exports
-vim/bundle
-!vim/bundle/Vundle.git
+#vim/bundle
+#!vim/bundle/Vundle.vim
 
