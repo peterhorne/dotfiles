@@ -110,9 +110,6 @@ let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-stand
 " Disable caching for Ctrl-P
 let g:ctrlp_use_caching = 0
 
-" Add a space after NERDComments
-let NERDSpaceDelims=1
-
 " Toggle NERDTree with Ctrl-N
 map <C-n> :NERDTreeToggle<CR>
 
