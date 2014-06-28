@@ -113,7 +113,7 @@ let g:ctrlp_use_caching = 0
 " Toggle NERDTree with Ctrl-N
 map <C-n> :NERDTreeToggle<CR>
 
-" Find reveal file in NERDTree
+" Reveal file in NERDTree
 map <C-m> :NERDTreeFind<CR>
 
 " Close vim if NERDTree is the only remaining open window
