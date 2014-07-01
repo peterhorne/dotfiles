@@ -13,6 +13,8 @@ Plugin 'bling/vim-airline'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'sjl/gundo.vim'
 Plugin 'tpope/vim-commentary'
+Plugin 'tpope/vim-fugitive'
+Plugin 'slim-template/vim-slim'
 
 call vundle#end()
 filetype plugin indent on
@@ -48,16 +50,11 @@ set clipboard=unnamed
 " Use spaces instead of tabs
 set expandtab
 
-" 1 tab == 4 spaces
-set shiftwidth=4
-set tabstop=4
+set autoindent
+set smartindent
 
-set ai   "Auto indent
-set si   "Smart indent
-set wrap "Wrap lines
-"
-"Highlight wrapped lines
-set showbreak=↪\ \ \ 
+set wrap
+set showbreak="↪\ \ \ " "Highlight wrapped lines
 
 " Turn backup off
 set nobackup
