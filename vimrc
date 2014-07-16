@@ -16,6 +16,7 @@ Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-fugitive'
 Plugin 'slim-template/vim-slim'
 Plugin 'kchmck/vim-coffee-script'
+Plugin 'mileszs/ack.vim'
 
 call vundle#end()
 filetype plugin indent on
@@ -69,6 +70,9 @@ set smartcase  " Override 'ignorecase' when pattern
 
 " Fix backspace
 set backspace=indent,eol,start
+
+" Open new splits on the right
+set splitright
 
 " Number of lines to show around cursor
 set scrolloff=5
