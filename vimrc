@@ -90,6 +90,9 @@ map <c-h> <c-w>h
 " Show hidden files in Ctrl-P
 let g:ctrlp_show_hidden = 1
 
+" Configure Ctrl-P (show more results)
+let g:ctrlp_match_window='bottom,order:btt,min:1,max:20,results:40'
+
 " Add a space after NERDComments
 let NERDSpaceDelims=1
 
