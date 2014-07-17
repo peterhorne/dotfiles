@@ -83,6 +83,9 @@ map <c-k> <c-w>k
 map <c-l> <c-w>l
 map <c-h> <c-w>h
 
+" Map .md file extension to markdown
+autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+
 " Ignore common files/dirs
 :set wildignore+=*/vendor/*
 :set wildignore+=*/cache/*
