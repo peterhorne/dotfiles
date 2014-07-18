@@ -1,0 +1,5 @@
+--ignore-file=match:compiled
+--ignore-file=is:main.js
+--ignore-file=is:main.js.map
+--ignore-file=is:tags
+
