@@ -52,6 +52,10 @@ set clipboard=unnamed
 " Use spaces instead of tabs
 set expandtab
 
+" Default indent amount
+set shiftwidth=2
+set tabstop=2
+
 set autoindent
 set smartindent
 
