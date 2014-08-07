@@ -8,15 +8,18 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'kien/ctrlp.vim'
-Plugin 'altercation/vim-colors-solarized'
 Plugin 'bling/vim-airline'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'sjl/gundo.vim'
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-fugitive'
+Plugin 'mileszs/ack.vim'
+
+" Colour schemes + syntax files
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'empanda/vim-varnish'
 Plugin 'slim-template/vim-slim'
 Plugin 'kchmck/vim-coffee-script'
-Plugin 'mileszs/ack.vim'
 
 call vundle#end()
 filetype plugin indent on
