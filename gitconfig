@@ -8,7 +8,7 @@
 [push]
 	default = simple
 [merge]
-	tool = vimdiff
+	tool = fugitive
 	conflictstyle = diff3
 [alias]
 	up = pull --rebase
@@ -17,3 +17,5 @@
 [alias]
 	lg = log --graph --oneline --decorate
 
+[mergetool "fugitive"]
+	cmd = vim -f -c \"Gdiff\" \"$MERGED\"
