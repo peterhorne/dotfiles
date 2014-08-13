@@ -146,3 +146,7 @@ let g:airline_symbols.branch = ''
 let g:airline_symbols.readonly = ''
 let g:airline_symbols.linenr = ''
 
+" Fugitive diffget mappings
+nnoremap dt :diffget //2<cr>:diffupdate<cr>
+nnoremap dm :diffget //3<cr>:diffupdate<cr>
+
