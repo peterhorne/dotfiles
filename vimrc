@@ -78,8 +78,9 @@ set smartcase  " Override 'ignorecase' when pattern
 " Fix backspace
 set backspace=indent,eol,start
 
-" Open new splits on the right
+" Open new splits below and to the right
 set splitright
+set splitbelow
 
 " Number of lines to show around cursor
 set scrolloff=5
