@@ -145,6 +145,6 @@ let g:airline_right_sep=''
 let g:airline_section_z=''
 
 " Fugitive diffget mappings
-nnoremap dt :diffget //2<cr>:diffupdate<cr>
-nnoremap dm :diffget //3<cr>:diffupdate<cr>
+nnoremap dgt :diffget //2<cr>:diffupdate<cr>
+nnoremap dgm :diffget //3<cr>:diffupdate<cr>
 
