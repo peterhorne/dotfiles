@@ -1,7 +1,7 @@
 ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="sorin-custom"
 DISABLE_AUTO_UPDATE="true"
-plugins=(autojump chruby extract osx zsh-syntax-highlighting)
+plugins=(autojump chruby ctrl-zsh extract osx zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 unsetopt autonamedirs
