@@ -94,14 +94,20 @@ map <c-h> <c-w>h
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 
 " Ignore common files/dirs
-:set wildignore+=*/vendor/*
-:set wildignore+=*/cache/*
+set wildignore+=*/vendor/*
+set wildignore+=*/cache/*
 
 " Show hidden files in Ctrl-P
 let g:ctrlp_show_hidden = 1
 
 " Configure Ctrl-P (show more results)
 let g:ctrlp_match_window='bottom,order:btt,min:1,max:20,results:40'
+
+" Speed up Ctrl-P for git projects
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f']
+
+" Disable caching for Ctrl-P
+let g:ctrlp_use_caching = 0
 
 " Add a space after NERDComments
 let NERDSpaceDelims=1
@@ -133,18 +139,10 @@ nnoremap U :GundoToggle<CR>
 " Display Gundo preview pane under current windows
 let g:gundo_preview_bottom=1
 
-" Use old vim-powerline symbols for airline
-if !exists('g:airline_symbols')
-  let g:airline_symbols = {}
-endif
-
-let g:airline_left_sep = ''
-let g:airline_left_alt_sep = ''
-let g:airline_right_sep = ''
-let g:airline_right_alt_sep = ''
-let g:airline_symbols.branch = ''
-let g:airline_symbols.readonly = ''
-let g:airline_symbols.linenr = ''
+" Remove airline seperators (arrows)
+let g:airline_left_sep=''
+let g:airline_right_sep=''
+let g:airline_section_z=''
 
 " Fugitive diffget mappings
 nnoremap dt :diffget //2<cr>:diffupdate<cr>
