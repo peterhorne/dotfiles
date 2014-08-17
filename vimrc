@@ -20,6 +20,8 @@ Plugin 'altercation/vim-colors-solarized'
 Plugin 'empanda/vim-varnish'
 Plugin 'slim-template/vim-slim'
 Plugin 'kchmck/vim-coffee-script'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-repeat'
 
 call vundle#end()
 filetype plugin indent on
@@ -125,11 +127,11 @@ let NERDTreeMinimalUI=1
 " Automatically delete buffers when deleting/renaming files in NERDTree
 let NERDTreeAutoDeleteBuffer=1
 
-" Map bidirectional easymotion find to `s`
-nmap s <Plug>(easymotion-s2)
+" " Map bidirectional easymotion find to `s`
+" nmap s <Plug>(easymotion-s2)
 
-" Enable smartcase for easymotion
-let g:EasyMotion_smartcase = 1
+" " Enable smartcase for easymotion
+" let g:EasyMotion_smartcase = 1
 
 " Map Gundo to U
 nnoremap U :GundoToggle<CR>
