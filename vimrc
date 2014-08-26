@@ -10,10 +10,10 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'kien/ctrlp.vim'
 Plugin 'bling/vim-airline'
 Plugin 'Lokaltog/vim-easymotion'
-Plugin 'sjl/gundo.vim'
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-fugitive'
 Plugin 'mileszs/ack.vim'
+Plugin 'ton/vim-bufsurf'
 
 " Colour schemes + syntax files
 Plugin 'altercation/vim-colors-solarized'
@@ -133,18 +133,16 @@ let NERDTreeAutoDeleteBuffer=1
 " " Enable smartcase for easymotion
 " let g:EasyMotion_smartcase = 1
 
-" Map Gundo to U
-nnoremap U :GundoToggle<CR>
-
-" Display Gundo preview pane under current windows
-let g:gundo_preview_bottom=1
-
 " Remove airline seperators (arrows)
 let g:airline_left_sep=''
 let g:airline_right_sep=''
 let g:airline_section_z=''
 
 " Fugitive diffget mappings
-nnoremap dgt :diffget //2<cr>:diffupdate<cr>
-nnoremap dgm :diffget //3<cr>:diffupdate<cr>
+nnoremap dgt :diffget //2<CR>:diffupdate<CR>
+nnoremap dgm :diffget //3<CR>:diffupdate<CR>
+
+" BufSurf mappings
+map <Leader>b :BufSurfBack<CR>
+map <Leader>f :BufSurfForward<CR>
 
