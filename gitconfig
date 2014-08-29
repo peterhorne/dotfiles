@@ -18,3 +18,5 @@
 
 [mergetool "fugitive"]
 	cmd = vim -f -c \"Gdiff\" \"$MERGED\"
+[tag]
+	sort = version:refname
