@@ -9,6 +9,7 @@
 	default = simple
 [merge]
 	tool = fugitive
+	conflictstyle = diff3
 [alias]
 	up = pull --rebase
 [alias]
