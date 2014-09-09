@@ -85,7 +85,7 @@ set splitright
 set splitbelow
 
 " Number of lines to show around cursor
-set scrolloff=5
+set scrolloff=3
 
 " Navigate splits with ctrl-jklh
 map <c-j> <c-w>j
