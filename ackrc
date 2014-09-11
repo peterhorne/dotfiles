@@ -1,2 +1,4 @@
+--type-set=slim=.slim
+
 --ignore-file=is:tags
 
