@@ -5,23 +5,26 @@ filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
-Plugin 'gmarik/Vundle.vim'
-Plugin 'scrooloose/nerdtree'
-Plugin 'kien/ctrlp.vim'
 Plugin 'bling/vim-airline'
+Plugin 'gmarik/Vundle.vim'
+Plugin 'kien/ctrlp.vim'
 Plugin 'Lokaltog/vim-easymotion'
+Plugin 'michaeljsmith/vim-indent-object'
+Plugin 'mileszs/ack.vim'
+Plugin 'scrooloose/nerdtree'
+Plugin 'ton/vim-bufsurf'
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-fugitive'
-Plugin 'mileszs/ack.vim'
-Plugin 'ton/vim-bufsurf'
+Plugin 'tpope/vim-unimpaired'
 
 " Colour schemes + syntax files
+
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'empanda/vim-varnish'
-Plugin 'slim-template/vim-slim'
 Plugin 'kchmck/vim-coffee-script'
-Plugin 'tpope/vim-surround'
+Plugin 'slim-template/vim-slim'
 Plugin 'tpope/vim-repeat'
+Plugin 'tpope/vim-surround'
 
 call vundle#end()
 filetype plugin indent on
