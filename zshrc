@@ -6,6 +6,7 @@ plugins=(autojump chruby ctrl-zsh extract osx zsh-syntax-highlighting)
 source $ZSH/oh-my-zsh.sh
 unsetopt autonamedirs
 unsetopt correct_all # Disable zsh autocorrect
+setopt extended_glob
 
 source $HOME/.path
 source $HOME/.exports
