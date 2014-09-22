@@ -12,13 +12,12 @@ Plugin 'Lokaltog/vim-easymotion'
 Plugin 'michaeljsmith/vim-indent-object'
 Plugin 'mileszs/ack.vim'
 Plugin 'scrooloose/nerdtree'
-Plugin 'ton/vim-bufsurf'
+" Plugin 'ton/vim-bufsurf'
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-unimpaired'
 
 " Colour schemes + syntax files
-
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'empanda/vim-varnish'
 Plugin 'kchmck/vim-coffee-script'
@@ -116,13 +115,16 @@ let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-stand
 let g:ctrlp_use_caching = 0
 
 " Toggle NERDTree with Ctrl-N
-map <C-n> :NERDTreeToggle<CR>
+map <C-n> :e .<CR>
 
 " Reveal file in NERDTree
-map <C-m> :NERDTreeFind<CR>
+map <C-m> :e %:h<CR>
+
+" Unbind <Enter>
+map <Enter> <Nop>
 
 " Close vim if NERDTree is the only remaining open window
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+" autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
 " Simplify NERDtree
 let NERDTreeMinimalUI=1
@@ -146,6 +148,6 @@ nnoremap dgt :diffget //2<CR>:diffupdate<CR>
 nnoremap dgm :diffget //3<CR>:diffupdate<CR>
 
 " BufSurf mappings
-map <Leader>b :BufSurfBack<CR>
-map <Leader>f :BufSurfForward<CR>
+" map <Leader>b :BufSurfBack<CR>
+" map <Leader>f :BufSurfForward<CR>
 
