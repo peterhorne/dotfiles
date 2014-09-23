@@ -12,7 +12,7 @@ Plugin 'Lokaltog/vim-easymotion'
 Plugin 'michaeljsmith/vim-indent-object'
 Plugin 'mileszs/ack.vim'
 Plugin 'scrooloose/nerdtree'
-" Plugin 'ton/vim-bufsurf'
+Plugin 'ton/vim-bufsurf'
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-unimpaired'
@@ -148,6 +148,6 @@ nnoremap dgt :diffget //2<CR>:diffupdate<CR>
 nnoremap dgm :diffget //3<CR>:diffupdate<CR>
 
 " BufSurf mappings
-" map <Leader>b :BufSurfBack<CR>
-" map <Leader>f :BufSurfForward<CR>
+map <Leader>b :BufSurfBack<CR>
+map <Leader>f :BufSurfForward<CR>
 
