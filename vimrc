@@ -16,6 +16,7 @@ Plugin 'ton/vim-bufsurf'
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-unimpaired'
+Plugin 'joonty/vdebug'
 
 " Colour schemes + syntax files
 Plugin 'altercation/vim-colors-solarized'
@@ -120,9 +121,6 @@ map <C-n> :e .<CR>
 " Reveal file in NERDTree
 map <C-m> :e %:h<CR>
 
-" Unbind <Enter>
-map <Enter> <Nop>
-
 " Close vim if NERDTree is the only remaining open window
 " autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
@@ -150,4 +148,7 @@ nnoremap dgm :diffget //3<CR>:diffupdate<CR>
 " BufSurf mappings
 map <Leader>b :BufSurfBack<CR>
 map <Leader>f :BufSurfForward<CR>
+
+" Vdebug config
+let g:vdebug_options= {"port" : 9001}
 
