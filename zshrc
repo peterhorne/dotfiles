@@ -21,4 +21,3 @@ alias git=hub
 
 # autoenv
 source /usr/local/opt/autoenv/activate.sh
-
