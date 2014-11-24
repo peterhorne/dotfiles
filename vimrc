@@ -99,6 +99,12 @@ map <c-k> <c-w>k
 map <c-l> <c-w>l
 map <c-h> <c-w>h
 
+" Navigate tabs
+noremap ∆ gT
+noremap ˚ gt
+noremap † :tabnew<CR>
+noremap œ :tabclose<CR>
+
 " Map to trigger sudo prompt
 cmap w!! %!sudo tee > /dev/null %
 
