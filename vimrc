@@ -105,6 +105,15 @@ noremap ˚ gt
 noremap † :tabnew<CR>
 noremap œ :tabclose<CR>
 
+" Matching braces
+inoremap {<CR> {<CR>}<Esc>O
+inoremap (<CR> (<CR>)<Esc>O
+inoremap [<CR> [<CR>]<Esc>O
+
+" Move cursor after matching brace
+inoremap <C-j> <Esc>/[)}"'\]>]<CR>:nohl<CR>a
+inoremap <C-k> <Esc>?[({"'[<]<CR>:nohl<CR>i
+
 " Map to trigger sudo prompt
 cmap w!! %!sudo tee > /dev/null %
 
