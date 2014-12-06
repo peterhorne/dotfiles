@@ -72,7 +72,7 @@ set autoindent
 set smartindent
 
 set wrap
-set showbreak="↪\ \ \ " "Highlight wrapped lines
+set breakindent
 
 " Turn backup off
 set nobackup
