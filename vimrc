@@ -94,6 +94,9 @@ set splitbelow
 " Number of lines to show around cursor
 set scrolloff=3
 
+" Hide current mode in command bar
+set noshowmode
+
 " Navigate splits with ctrl-jklh
 map <c-j> <c-w>j
 map <c-k> <c-w>k
