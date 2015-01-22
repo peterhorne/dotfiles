@@ -84,6 +84,9 @@ set ignorecase " Ignore case when using a search pattern
 set smartcase  " Override 'ignorecase' when pattern
                " has upper case character
 
+" Toggle highlighted search results
+noremap <leader>h :set hlsearch! hlsearch?<CR>
+
 " Fix backspace
 set backspace=indent,eol,start
 
