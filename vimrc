@@ -4,11 +4,10 @@ filetype off
 
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
+Plugin 'gmarik/Vundle.vim'
 
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'bling/vim-airline'
-Plugin 'chrisbra/vim-show-whitespace'
-Plugin 'gmarik/Vundle.vim'
 Plugin 'joonty/vdebug'
 Plugin 'kien/ctrlp.vim'
 Plugin 'michaeljsmith/vim-indent-object'
@@ -158,11 +157,11 @@ let NERDTreeMinimalUI=1
 " Automatically delete buffers when deleting/renaming files in NERDTree
 let NERDTreeAutoDeleteBuffer=1
 
-" " Map bidirectional easymotion find to `s`
-" nmap s <Plug>(easymotion-s2)
+" Map bidirectional easymotion find to `s`
+nmap s <Plug>(easymotion-s2)
 
-" " Enable smartcase for easymotion
-" let g:EasyMotion_smartcase = 1
+" Enable smartcase for easymotion
+let g:EasyMotion_smartcase = 1
 
 " Remove airline seperators (arrows)
 let g:airline_left_sep=''
@@ -179,6 +178,3 @@ map <Leader>f :BufSurfForward<CR>
 
 " Vdebug config
 let g:vdebug_options= {"port" : 9001}
-
-" Highlight spaces
-let g:showwhite_highlighting = 'ctermfg=10 ctermbg=NONE guifg=LightGrey guibg=NONE'
