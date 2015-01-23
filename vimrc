@@ -11,6 +11,7 @@ Plugin 'Raimondi/delimitMate'
 Plugin 'bling/vim-airline'
 Plugin 'joonty/vdebug'
 Plugin 'kien/ctrlp.vim'
+Plugin 'mhinz/vim-startify'
 Plugin 'michaeljsmith/vim-indent-object'
 Plugin 'mileszs/ack.vim'
 Plugin 'scrooloose/nerdtree'
@@ -177,3 +178,8 @@ nnoremap <leader>a :Ack
 " delimitMate
 let delimitMate_expand_cr = 2
 let delimitMate_expand_space = 1
+
+" Startify
+let g:startify_list_order = ['dir', 'sessions']
+let g:startify_custom_header =
+  \ map(split(system('fortune ~/.fortune/vim'), '\n'), '"   ". v:val') + ['','']
