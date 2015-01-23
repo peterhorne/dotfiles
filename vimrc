@@ -7,6 +7,7 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
 Plugin 'Lokaltog/vim-easymotion'
+Plugin 'Raimondi/delimitMate'
 Plugin 'bling/vim-airline'
 Plugin 'joonty/vdebug'
 Plugin 'kien/ctrlp.vim'
@@ -111,15 +112,6 @@ noremap ˚ gt
 noremap † :tabnew<CR>
 noremap œ :tabclose<CR>
 
-" Matching braces
-inoremap {<CR> {<CR>}<Esc>O
-inoremap (<CR> (<CR>)<Esc>O
-inoremap [<CR> [<CR>]<Esc>O
-
-" Move cursor after matching brace
-inoremap <C-j> <Esc>/[)}"'\]>]<CR>:nohl<CR>a
-inoremap <C-k> <Esc>?[({"'[<]<CR>:nohl<CR>i
-
 " Map to trigger sudo prompt
 cmap w!! %!sudo tee > /dev/null %
 
@@ -178,3 +170,10 @@ map <Leader>f :BufSurfForward<CR>
 
 " Vdebug config
 let g:vdebug_options= {"port" : 9001}
+
+" Map Ack
+nnoremap <leader>a :Ack 
+
+" delimitMate
+let delimitMate_expand_cr = 2
+let delimitMate_expand_space = 1
