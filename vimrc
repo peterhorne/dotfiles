@@ -182,4 +182,7 @@ let delimitMate_expand_space = 1
 " Startify
 let g:startify_list_order = ['dir', 'sessions']
 let g:startify_custom_header =
-  \ map(split(system('fortune ~/.fortune/vim'), '\n'), '"   ". v:val') + ['','']
+  \ ['   VIM - Vi IMproved', '', ''] +
+  \ ['   Random Tip:', '   -----------'] +
+  \ map(split(system('fortune ~/.fortune/vim'), '\n'), '"   ". v:val')
+  \ + ['','']

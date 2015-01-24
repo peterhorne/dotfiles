@@ -10,29 +10,12 @@ zt    put this line at the 't'op of the screen
 zb    put this line at the 'b'ottom of the screen
 zz    put this line at the middle of the screen
 %
-=     reindent
-gg=G  Re-indent entire buffer
-%
 ]p    Paste text, aligning indentation with surroundings
 %
-vim-indent-object
-=================
-
-ai    (A)n (I)ndentation level and line above. 
-ii    (I)nner (I)ndentation level (no line above). 
-aI    (A)n (I)ndentation level and lines above/below. 
-iI    (I)nner (I)ndentation level (no lines above/below). 
+aI    Parent indentation level text block
+ii    Inner indentation level text block
 %
-Sessions
-========
-
 :mksession ~/mysession.vim    Create a session
 :source ~/mysession.vim       Restore session
 vim -S ~/mysession.vim        Start vim and restore session
-%
-Splits
-=====
-
-C-w _   Maximise active size
-C-w =   Resize windows to equal size
 %
