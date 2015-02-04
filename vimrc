@@ -8,16 +8,19 @@ Plugin 'gmarik/Vundle.vim'
 
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'Raimondi/delimitMate'
+Plugin 'Valloric/YouCompleteMe'
 Plugin 'bling/vim-airline'
 Plugin 'joonty/vdebug'
 Plugin 'kien/ctrlp.vim'
-Plugin 'mhinz/vim-startify'
 Plugin 'michaeljsmith/vim-indent-object'
 Plugin 'mileszs/ack.vim'
 Plugin 'scrooloose/nerdtree'
+Plugin 'suan/vim-instant-markdown'
 Plugin 'ton/vim-bufsurf'
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-repeat'
+Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-unimpaired'
 
 " Colour schemes + syntax files
@@ -25,8 +28,7 @@ Plugin 'altercation/vim-colors-solarized'
 Plugin 'empanda/vim-varnish'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'slim-template/vim-slim'
-Plugin 'tpope/vim-repeat'
-Plugin 'tpope/vim-surround'
+Plugin 'vim-scripts/nginx.vim'
 
 call vundle#end()
 filetype plugin indent on
@@ -186,3 +188,7 @@ let g:startify_custom_header =
   \ ['   Random Tip:', '   -----------'] +
   \ map(split(system('fortune ~/.fortune/vim'), '\n'), '"   ". v:val')
   \ + ['','']
+
+" Instant Markdown
+let g:instant_markdown_autostart = 0
+map <Leader>m :InstantMarkdownPreview<CR>
