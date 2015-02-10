@@ -25,6 +25,7 @@ Plugin 'tpope/vim-unimpaired'
 
 " Colour schemes + syntax files
 Plugin 'altercation/vim-colors-solarized'
+Plugin 'ekalinin/Dockerfile.vim'
 Plugin 'empanda/vim-varnish'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'slim-template/vim-slim'
