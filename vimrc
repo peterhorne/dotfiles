@@ -19,6 +19,7 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'suan/vim-instant-markdown'
 Plugin 'ton/vim-bufsurf'
 Plugin 'tpope/vim-commentary'
+Plugin 'tpope/vim-dispatch'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-surround'
@@ -193,4 +194,8 @@ let g:startify_custom_header =
 
 " Instant Markdown
 let g:instant_markdown_autostart = 0
-map <Leader>m :InstantMarkdownPreview<CR>
+" map <Leader>m :InstantMarkdownPreview<CR>
+
+" Use octodown as default build for Markdown files
+autocmd FileType markdown let b:dispatch = 'octodown %'
+map <Leader>d :Dispatch<CR>
