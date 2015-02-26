@@ -32,6 +32,7 @@ Plugin 'empanda/vim-varnish'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'slim-template/vim-slim'
 Plugin 'vim-scripts/nginx.vim'
+Plugin 'wting/rust.vim'
 
 call vundle#end()
 filetype plugin indent on
