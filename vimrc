@@ -201,3 +201,6 @@ let g:startify_custom_header =
 autocmd FileType markdown let b:dispatch = 'octodown %'
 autocmd FileType rust let b:dispatch = 'cargo run'
 map <Leader>d :Dispatch<CR>:copen<CR><C-w><C-p>
+
+" vim-slime
+let g:slime_paste_file = "/tmp/.slime_paste"
