@@ -197,6 +197,7 @@ let g:startify_custom_header =
 let g:instant_markdown_autostart = 0
 " map <Leader>m :InstantMarkdownPreview<CR>
 
-" Use octodown as default build for Markdown files
+" vim-dispatch
 autocmd FileType markdown let b:dispatch = 'octodown %'
+autocmd FileType rust let b:dispatch = 'cargo run'
 map <Leader>d :Dispatch<CR>
