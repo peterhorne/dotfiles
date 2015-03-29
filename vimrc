@@ -8,15 +8,15 @@ Plugin 'gmarik/Vundle.vim'
 
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'Raimondi/delimitMate'
-Plugin 'Valloric/YouCompleteMe'
+" Plugin 'Valloric/YouCompleteMe'
 Plugin 'bling/vim-airline'
-Plugin 'joonty/vdebug'
-Plugin 'jpalardy/vim-slime'
+" Plugin 'joonty/vdebug'
+" Plugin 'jpalardy/vim-slime'
 Plugin 'kien/ctrlp.vim'
 Plugin 'michaeljsmith/vim-indent-object'
 Plugin 'mileszs/ack.vim'
 Plugin 'scrooloose/nerdtree'
-Plugin 'suan/vim-instant-markdown'
+" Plugin 'suan/vim-instant-markdown'
 Plugin 'ton/vim-bufsurf'
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-dispatch'
@@ -142,10 +142,10 @@ let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-stand
 let g:ctrlp_use_caching = 0
 
 " Toggle NERDTree with Ctrl-N
-map <C-n> :e .<CR>
+map <Leader>e :e .<CR>
 
 " Reveal file in NERDTree
-map <C-m> :e %:h<CR>
+map <Leader>r :e %:h<CR>
 
 " Close vim if NERDTree is the only remaining open window
 " autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
@@ -157,7 +157,7 @@ let NERDTreeMinimalUI=1
 let NERDTreeAutoDeleteBuffer=1
 
 " Map bidirectional easymotion find to `s`
-nmap s <Plug>(easymotion-s2)
+nmap <Leader>s <Plug>(easymotion-s2)
 
 " Enable smartcase for easymotion
 let g:EasyMotion_smartcase = 1
@@ -194,10 +194,10 @@ let g:startify_custom_header =
   \ + ['','']
 
 " Instant Markdown
-let g:instant_markdown_autostart = 0
+" let g:instant_markdown_autostart = 0
 " map <Leader>m :InstantMarkdownPreview<CR>
 
 " vim-dispatch
 autocmd FileType markdown let b:dispatch = 'octodown %'
 autocmd FileType rust let b:dispatch = 'cargo run'
-map <Leader>d :Dispatch<CR>
+map <Leader>d :Dispatch<CR>:copen<CR><C-w><C-p>
