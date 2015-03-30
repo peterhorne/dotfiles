@@ -5,8 +5,8 @@ export CAP_PHP_FPM_LOG_PATH=/usr/local/var/log/php-fpm
 
 export CAP_DEVELOPMENT_USER=peter
 export CAP_REMOTE_USER=peterhorne
-export SHOP_DEVELOPMENT_PATH=/Users/peter/src/musicglue/shop
-export SYMFONY_SHOP_DEVELOPMENT_PATH=/Users/peter/src/musicglue/shop
+export SHOP_DEVELOPMENT_PATH=/Users/peter/src/unison/shop
+export SYMFONY_SHOP_DEVELOPMENT_PATH=/Users/peter/src/unison/shop
 export SITES_DEVELOPMENT_PATH=/Users/peter/src/musicglue/sites
 export SHOP_TOQUE_PATH=/Users/peter/src/musicglue/shop-toque
 #export JRUBY_OPTS="--1.9 -J-client -J-d32"
