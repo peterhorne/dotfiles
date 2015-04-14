@@ -53,6 +53,9 @@ set laststatus=2
 " Enable mouse support (useful for resizing windows)
 set mouse=a
 
+" Enable spell checking
+set spell
+
 " Highlight current line
 set cul
 
