@@ -113,12 +113,6 @@ set scrolloff=3
 " Hide current mode in command bar
 set noshowmode
 
-" Prevent cursor jumping over wrapped lines
-noremap j gj
-noremap k gk
-noremap gj j
-noremap gk k
-
 " Navigate splits with ctrl-jklh
 map <c-j> <c-w>j
 map <c-k> <c-w>k
