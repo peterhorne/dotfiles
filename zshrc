@@ -8,9 +8,7 @@ unsetopt autonamedirs
 unsetopt correct_all # Disable zsh autocorrect
 setopt extended_glob
 
-export PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin
-# export PATH=$PATH:$(brew --prefix homebrew/php/php56)/bin
-
+export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
 export EDITOR='vim'
 
 source $HOME/.exports
