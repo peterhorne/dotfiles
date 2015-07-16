@@ -1,4 +1,4 @@
 --type-set=slim=.slim
+--type-set=markdown=.md
 
 --ignore-file=is:tags
-
