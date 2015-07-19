@@ -18,6 +18,7 @@ Plugin 'mattboehm/vim-accordion'
 Plugin 'mattboehm/vim-unstack'
 Plugin 'michaeljsmith/vim-indent-object'
 Plugin 'mileszs/ack.vim'
+Plugin 'mkitt/tabline.vim'
 Plugin 'ntpeters/vim-better-whitespace'
 Plugin 'scrooloose/nerdtree'
 " Plugin 'suan/vim-instant-markdown'
@@ -213,3 +214,8 @@ map <Leader>d :Dispatch<CR>:copen<CR><C-w><C-p>
 
 " vim-slime
 let g:slime_paste_file = "/tmp/.slime_paste"
+
+" Tab bar colours
+hi TabLine      ctermfg=Black  ctermbg=Green     cterm=NONE
+hi TabLineFill  ctermfg=Black  ctermbg=Green     cterm=NONE
+hi TabLineSel   ctermfg=White  ctermbg=DarkBlue  cterm=NONE
