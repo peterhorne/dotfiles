@@ -8,20 +8,15 @@ Plugin 'gmarik/Vundle.vim'
 
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'Raimondi/delimitMate'
-" Plugin 'Valloric/YouCompleteMe'
 Plugin 'bling/vim-airline'
 Plugin 'ecomba/vim-ruby-refactoring'
-" Plugin 'joonty/vdebug'
-" Plugin 'jpalardy/vim-slime'
 Plugin 'kien/ctrlp.vim'
 Plugin 'mattboehm/vim-accordion'
 Plugin 'mattboehm/vim-unstack'
 Plugin 'michaeljsmith/vim-indent-object'
-Plugin 'mileszs/ack.vim'
 Plugin 'ntpeters/vim-better-whitespace'
 Plugin 'peterhorne/tabline.vim'
 Plugin 'scrooloose/nerdtree'
-" Plugin 'suan/vim-instant-markdown'
 Plugin 'ton/vim-bufsurf'
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-dispatch'
@@ -30,6 +25,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-unimpaired'
+Plugin 'wincent/ferret'
 
 " Colour schemes + syntax files
 Plugin 'altercation/vim-colors-solarized'
@@ -152,22 +148,25 @@ let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-stand
 let g:ctrlp_use_caching = 0
 
 " Toggle NERDTree with Ctrl-N
-map <Leader>e :e .<CR>
+" map <Leader>e :e .<CR>
 
 " Reveal file in NERDTree
-map <Leader>r :e %:h<CR>
+" map <Leader>r :e %:h<CR>
+
+map <Leader>n :NERDTree<CR>
+map <Leader><Leader>n :NERDTreeFind<CR>
 
 " Close vim if NERDTree is the only remaining open window
-" autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
-" Simplify NERDtree
+" Simplify NERDTree
 let NERDTreeMinimalUI=1
 
 " Automatically delete buffers when deleting/renaming files in NERDTree
 let NERDTreeAutoDeleteBuffer=1
 
-" Map bidirectional easymotion find to `s`
-nmap <Leader>s <Plug>(easymotion-s2)
+" Close NERDTree when opening file
+let NERDTreeQuitOnOpen=1
 
 " Enable smartcase for easymotion
 let g:EasyMotion_smartcase = 1
@@ -185,35 +184,14 @@ nnoremap dgm :diffget //3<CR>:diffupdate<CR>
 map <Leader>b :BufSurfBack<CR>
 map <Leader>f :BufSurfForward<CR>
 
-" Vdebug config
-let g:vdebug_options= {"port" : 9001}
-
-" Map Ack
-nnoremap <leader>a :Ack 
-
 " delimitMate
 let delimitMate_expand_cr = 2
 let delimitMate_expand_space = 1
-
-" Startify
-" let g:startify_list_order = ['dir', 'sessions']
-" let g:startify_custom_header =
-"   \ ['   VIM - Vi IMproved', '', ''] +
-"   \ ['   Random Tip:', '   -----------'] +
-"   \ map(split(system('fortune ~/.fortune/vim'), '\n'), '"   ". v:val')
-"   \ + ['','']
-
-" Instant Markdown
-" let g:instant_markdown_autostart = 0
-" map <Leader>m :InstantMarkdownPreview<CR>
 
 " vim-dispatch
 autocmd FileType markdown let b:dispatch = 'octodown %'
 autocmd FileType rust let b:dispatch = 'cargo run'
 map <Leader>d :Dispatch<CR>:copen<CR><C-w><C-p>
-
-" vim-slime
-let g:slime_paste_file = "/tmp/.slime_paste"
 
 " Tab bar colours
 hi TabLine      ctermfg=Black  ctermbg=Green     cterm=NONE
