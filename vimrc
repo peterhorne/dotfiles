@@ -131,6 +131,9 @@ cmap w!! %!sudo tee > /dev/null %
 " Map .md file extension to markdown
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 
+" Map .es6 file extension to javascript
+autocmd BufNewFile,BufReadPost *.es6 set filetype=javascript
+
 " Ignore common files/dirs
 set wildignore+=*/vendor/*
 set wildignore+=*/cache/*
