@@ -21,5 +21,6 @@ alias cpgp='cpg && git push'
 # hub
 alias git=hub
 
-# autoenv
-source /usr/local/opt/autoenv/activate.sh
+# direnv
+export DIRENV_LOG_FORMAT=""
+eval "$(direnv hook zsh)"
