@@ -9,10 +9,13 @@ unsetopt correct_all # Disable zsh autocorrect
 setopt extended_glob
 
 export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
-export EDITOR='vim'
+export EDITOR='nvim'
 
 source $HOME/.exports
 [ -f $HOME/.local-exports ] && source $HOME/.local-exports
+
+# rustup
+source $HOME/.cargo/env
 
 # Git shortcuts
 alias cpg='git rev-parse HEAD | tr -d "\n" | pbcopy'
@@ -24,3 +27,22 @@ alias git=hub
 # direnv
 export DIRENV_LOG_FORMAT=""
 eval "$(direnv hook zsh)"
+
+# go path
+export GOPATH="$HOME/.go"
+
+# fix <C-h> in vim (no backspace)
+infocmp $TERM | sed 's/kbs=^[hH]/kbs=\\177/' > /tmp/$TERM.ti
+tic /tmp/$TERM.ti
+rm /tmp/$TERM.ti
+
+# FZF
+export FZF_DEFAULT_COMMAND='ag -g "" --hidden'
+
+# FZF git commits
+fcs() {
+  local commits commit
+  commits=$(git log --color=always --pretty=oneline --abbrev-commit --reverse) &&
+  commit=$(echo "$commits" | fzf --tac +s +m -e --ansi --reverse) &&
+  echo -n $(echo "$commit" | sed "s/ .*//")
+}
