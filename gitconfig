@@ -2,7 +2,7 @@
 	name = Peter Horne
 [core]
     excludesfile = /Users/peter/.gitignore
-    editor = $EDITOR
+    editor = nvim
 [color]
 	ui = true
 [push]
@@ -12,13 +12,13 @@
 	conflictstyle = diff3
 [alias]
 	up = pull --rebase
-[alias]
-    bump = commit --allow-empty -m 'Bump commit'
-[alias]
+  bump = commit --allow-empty -m 'Bump commit'
 	lg = log --graph --oneline --decorate
 [mergetool "fugitive"]
-	cmd = vim -f -c \"Gdiff\" \"$MERGED\"
+	cmd = nvim -f -c \"Gdiff\" \"$MERGED\"
 [tag]
 	sort = version:refname
 [rerere]
 	enabled = true
+[diff]
+	noprefix = true
