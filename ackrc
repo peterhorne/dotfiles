@@ -2,3 +2,7 @@
 --type-set=markdown=.md
 
 --ignore-file=is:tags
+--ignore-dir=tmp
+--ignore-dir=log
+--ignore-dir=build
+--ignore-dir=dist
