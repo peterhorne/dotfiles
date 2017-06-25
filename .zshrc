@@ -17,7 +17,7 @@ export EDITOR='nvim'
 alias dotfiles='/usr/bin/env git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
 # rustup
-source $HOME/.cargo/env
+# source $HOME/.cargo/env
 
 # Git shortcuts
 alias cpg='git rev-parse HEAD | tr -d "\n" | pbcopy'
