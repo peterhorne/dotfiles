@@ -11,8 +11,10 @@ setopt extended_glob
 export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
 export EDITOR='nvim'
 
-source $HOME/.exports
 [ -f $HOME/.local-exports ] && source $HOME/.local-exports
+
+# dotfiles
+alias dotfiles='/usr/bin/env git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
 # rustup
 source $HOME/.cargo/env
