@@ -4,7 +4,7 @@ filetype off
 
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-Plugin 'gmarik/Vundle.vim'
+Plugin 'VundleVim/Vundle.vim'
 
 Plugin 'AndrewRadev/splitjoin.vim'
 Plugin 'Raimondi/delimitMate'
@@ -53,9 +53,11 @@ set rtp+=/usr/local/opt/fzf
 nnoremap <C-p> :FZF --history /tmp/fzf_history<CR>
 
 " Theme
+set termguicolors
 set background=dark
 colorscheme gruvbox
-let g:gruvbox_contrast_dark="soft"
+let g:gruvbox_contrast_dark="dark"
+let g:gruvbox_italic=1
 
 " Enable syntax highlighting
 syntax enable
