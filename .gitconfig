@@ -1,5 +1,6 @@
 [user]
 	name = Peter Horne
+	email = peterhorne92@gmail.com
 [core]
     excludesfile = /Users/peter/.gitignore
     editor = nvim
