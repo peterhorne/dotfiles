@@ -161,3 +161,6 @@ augroup END
 
 nmap <leader>d :TSType<CR>
 nmap <leader><leader>d :TSDefPreview<CR>
+
+" Neoformat
+autocmd BufWinEnter,BufWrite,CursorHold *.js,*.ts,*.tsx,*.css Neoformat
