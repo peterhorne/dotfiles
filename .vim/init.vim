@@ -1,15 +1,18 @@
 call plug#begin('~/.local/share/nvim/plugged')
 
 Plug 'AndrewRadev/splitjoin.vim'
+Plug 'HerringtonDarkholme/yats.vim'
 Plug 'Raimondi/delimitMate'
-Plug 'Shougo/deoplete.nvim'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'benekastah/neomake'
 Plug 'bogado/file-line'
 Plug 'easymotion/vim-easymotion'
 Plug 'junegunn/fzf.vim'
+Plug 'mhartington/nvim-typescript', { 'do': ':UpdateRemotePlugins' }
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'morhetz/gruvbox'
 Plug 'ntpeters/vim-better-whitespace'
+Plug 'sbdchd/neoformat'
 Plug 'scrooloose/nerdtree'
 Plug 'sheerun/vim-polyglot'
 Plug 'ton/vim-bufsurf'
@@ -18,9 +21,11 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-rhubarb'
 Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
+
 
 call plug#end()
 
@@ -34,8 +39,6 @@ set background=dark
 colorscheme gruvbox
 let g:gruvbox_contrast_dark="soft"
 let g:gruvbox_italic=1
-
-" Enable syntax highlighting
 syntax enable
 
 " Always show status bar
@@ -89,8 +92,8 @@ set smartcase
 set backspace=indent,eol,start
 
 " Open new splits below and to the right
-" set splitright
-" set splitbelow
+set splitright
+set splitbelow
 
 " Navigate splits with ctrl-jklh
 map <c-j> <c-w>j
@@ -147,3 +150,14 @@ let g:neomake_error_sign = { 'text': '•', 'texthl': 'GruvboxRedSign' }
 let g:neomake_warning_sign = { 'text': '•', 'texthl': 'GruvboxYellowSign' }
 autocmd! BufWinEnter * Neomake
 autocmd! BufWritePost * Neomake
+
+" deoplete
+let g:deoplete#enable_at_startup = 1
+
+" nvim-typescript
+augroup filetypedetect
+    au BufRead,BufNewFile __doc__ setfiletype typescript
+augroup END
+
+nmap <leader>d :TSType<CR>
+nmap <leader><leader>d :TSDefPreview<CR>
