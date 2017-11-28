@@ -33,6 +33,9 @@ eval "$(direnv hook zsh)"
 # go path
 export GOPATH="$HOME/.go"
 
+# latex binaries
+export PATH="/Library/TeX/texbin:$PATH"
+
 # fix <C-h> in vim (no backspace)
 infocmp $TERM | sed 's/kbs=^[hH]/kbs=\\177/' > /tmp/$TERM.ti
 tic /tmp/$TERM.ti
