@@ -3,7 +3,10 @@ call plug#begin('~/.local/share/nvim/plugged')
 Plug '/usr/local/opt/fzf'
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'HerringtonDarkholme/yats.vim'
+Plug 'Quramy/tsuquyomi'
 Plug 'Raimondi/delimitMate'
+Plug 'Shougo/echodoc.vim'
+Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 Plug 'Yggdroot/indentLine'
 Plug 'bogado/file-line'
 Plug 'dhruvasagar/vim-buffer-history'
@@ -17,7 +20,6 @@ Plug 'prabirshrestha/vim-lsp'
 Plug 'sbdchd/neoformat'
 Plug 'scrooloose/nerdtree'
 Plug 'sheerun/vim-polyglot'
-" Plug 'ton/vim-bufsurf'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-endwise'
@@ -29,7 +31,6 @@ Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'w0rp/ale'
-
 
 call plug#end()
 
@@ -148,9 +149,6 @@ nnoremap <C-p> :FZF<CR>
 nnoremap <Leader>a :Ag<CR>
 
 " Enable per-command history.
-" CTRL-N and CTRL-P will be automatically bound to next-history and
-" previous-history instead of down and up. If you don't like the change,
-" explicitly bind the keys to down and up in your $FZF_DEFAULT_OPTS.
 let g:fzf_history_dir = '~/.local/share/fzf-history'
 
 " Ignore filenames when searcing
@@ -169,10 +167,6 @@ nnoremap gr :Start git reset<CR><CR>
 nnoremap dgt :diffget //2<CR>:diffupdate<CR>
 nnoremap dgm :diffget //3<CR>:diffupdate<CR>
 
-" BufSurf
-" map <Leader>b :BufSurfBack<CR>
-" map <Leader>f :BufSurfForward<CR>
-
 " vim-buffer-history (autocmd used to overwrite vim-unimpaired bindings)
 autocmd VimEnter * noremap [b :BufferHistoryBack<CR>
 autocmd VimEnter * noremap ]b :BufferHistoryForward<CR>
@@ -180,12 +174,6 @@ autocmd VimEnter * noremap ]b :BufferHistoryForward<CR>
 " delimitMate
 let delimitMate_expand_cr = 2
 let delimitMate_expand_space = 1
-
-" Neomake
-" let g:neomake_error_sign = { 'text': '•', 'texthl': 'GruvboxRedSign' }
-" let g:neomake_warning_sign = { 'text': '•', 'texthl': 'GruvboxYellowSign' }
-" autocmd! BufWinEnter * Neomake
-" autocmd! BufWritePost * Neomake
 
 " Ale
 let g:ale_sign_error = '•'
@@ -202,22 +190,21 @@ augroup END
 
 " vim-lsp
 if executable('typescript-language-server')
-  augroup peter#vim-lsp#typescript
-    autocmd!
-    autocmd User lsp_setup call lsp#register_server({
-      \ 'name': 'typescript-language-server',
-      \ 'cmd': {server_info->[&shell, &shellcmdflag, 'typescript-language-server --stdio']},
-      \ 'root_uri':{server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'tsconfig.json'))},
-      \ 'whitelist': ['typescript'],
-      \ })
-
-    autocmd FileType typescript setlocal omnifunc=lsp#complete
-    autocmd FileType typescript nnoremap K :LspHover<cr>
-    autocmd FileType typescript nnoremap <buffer> <C-]> :LspDefinition<cr>
-    autocmd FileType typescript nnoremap <buffer> <C-^> :LspReferences<cr>
-    autocmd FileType *.lsp-hover nnoremap <buffer><silent> q :quit<cr>
-  augroup END
+  au User lsp_setup call lsp#register_server({
+    \ 'name': 'typescript-language-server',
+    \ 'cmd': {server_info->[&shell, &shellcmdflag, 'typescript-language-server --stdio']},
+    \ 'root_uri':{server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'tsconfig.json'))},
+    \ 'whitelist': ['typescript'],
+    \ })
 endif
+
+augroup peter#vim-lsp#typescript
+  autocmd!
+  autocmd FileType typescript nnoremap K :LspHover<cr>
+  autocmd FileType typescript nnoremap <buffer> <C-]> :LspDefinition<cr>
+  autocmd FileType typescript nnoremap <buffer> <C-^> :LspReferences<cr>
+  autocmd FileType *.lsp-hover nnoremap <buffer><silent> q :quit<cr>
+augroup END
 
 " indentLine
 let g:indentLine_char = '│'
@@ -228,3 +215,12 @@ let g:neoformat_sql_sqlformat = {
       \ 'args': ['--keywords upper --identifiers lower --wrap_after 80 --reindent', '-'],
       \ 'stdin': 1,
       \ }
+
+" tsuquyomi
+let g:tsuquyomi_completion_detail = 1
+let g:tsuquyomi_disable_quickfix = 1
+let g:tsuquyomi_disable_default_mappings = 1
+
+" echodoc
+let g:echodoc#enable_at_startup = 1
+set noshowmode
