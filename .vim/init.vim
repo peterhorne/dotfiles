@@ -3,23 +3,24 @@ call plug#begin('~/.local/share/nvim/plugged')
 Plug '/usr/local/opt/fzf'
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'HerringtonDarkholme/yats.vim'
-Plug 'Quramy/tsuquyomi'
 Plug 'Raimondi/delimitMate'
 Plug 'Shougo/echodoc.vim'
 Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 Plug 'Yggdroot/indentLine'
 Plug 'bogado/file-line'
-Plug 'dhruvasagar/vim-buffer-history'
 Plug 'easymotion/vim-easymotion'
 Plug 'junegunn/fzf.vim'
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'morhetz/gruvbox'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'prabirshrestha/async.vim'
+Plug 'prabirshrestha/asyncomplete-lsp.vim'
+Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'prabirshrestha/vim-lsp'
 Plug 'sbdchd/neoformat'
 Plug 'scrooloose/nerdtree'
 Plug 'sheerun/vim-polyglot'
+Plug 'ton/vim-bufsurf'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-endwise'
@@ -99,6 +100,9 @@ set backspace=indent,eol,start
 set splitright
 set splitbelow
 
+" Improve suggestions UI
+set completeopt=menuone,preview
+
 " Navigate splits with ctrl-jklh
 map <c-j> <c-w>j
 map <c-k> <c-w>k
@@ -167,9 +171,9 @@ nnoremap gr :Start git reset<CR><CR>
 nnoremap dgt :diffget //2<CR>:diffupdate<CR>
 nnoremap dgm :diffget //3<CR>:diffupdate<CR>
 
-" vim-buffer-history (autocmd used to overwrite vim-unimpaired bindings)
-autocmd VimEnter * noremap [b :BufferHistoryBack<CR>
-autocmd VimEnter * noremap ]b :BufferHistoryForward<CR>
+" bufsurf (autocmd used to overwrite vim-unimpaired bindings)
+autocmd VimEnter * noremap [b :BufSurfBack<CR>
+autocmd VimEnter * noremap ]b :BufSurfForward<CR>
 
 " delimitMate
 let delimitMate_expand_cr = 2
@@ -180,6 +184,7 @@ let g:ale_sign_error = '•'
 let g:ale_sign_warning = '•'
 let g:ale_set_loclist = 0
 let g:ale_set_quickfix = 0
+let g:ale_echo_msg_format = '[%linter%] %s'
 
 " Always render sign column
 augroup peter#ale#sign
@@ -196,15 +201,16 @@ if executable('typescript-language-server')
     \ 'root_uri':{server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'tsconfig.json'))},
     \ 'whitelist': ['typescript'],
     \ })
-endif
 
-augroup peter#vim-lsp#typescript
-  autocmd!
-  autocmd FileType typescript nnoremap K :LspHover<cr>
-  autocmd FileType typescript nnoremap <buffer> <C-]> :LspDefinition<cr>
-  autocmd FileType typescript nnoremap <buffer> <C-^> :LspReferences<cr>
-  autocmd FileType *.lsp-hover nnoremap <buffer><silent> q :quit<cr>
-augroup END
+  augroup peter#vim-lsp#typescript
+    autocmd!
+    autocmd FileType typescript nnoremap K :LspHover<cr>
+    autocmd FileType typescript nnoremap <buffer> <C-]> :LspDefinition<cr>
+    autocmd FileType typescript nnoremap <buffer> <C-^> :LspReferences<cr>
+    autocmd FileType *.lsp-hover nnoremap <buffer><silent> q :quit<cr>
+    autocmd FileType typescript setlocal omnifunc=lsp#complete
+  augroup END
+endif
 
 " indentLine
 let g:indentLine_char = '│'
@@ -215,12 +221,3 @@ let g:neoformat_sql_sqlformat = {
       \ 'args': ['--keywords upper --identifiers lower --wrap_after 80 --reindent', '-'],
       \ 'stdin': 1,
       \ }
-
-" tsuquyomi
-let g:tsuquyomi_completion_detail = 1
-let g:tsuquyomi_disable_quickfix = 1
-let g:tsuquyomi_disable_default_mappings = 1
-
-" echodoc
-let g:echodoc#enable_at_startup = 1
-set noshowmode

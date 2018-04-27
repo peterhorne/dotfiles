@@ -13,7 +13,6 @@
 	conflictstyle = diff3
 [alias]
 	up = pull --rebase
-  bump = commit --allow-empty -m 'Bump commit'
 	lg = log --graph --oneline --decorate
 [mergetool "fugitive"]
 	cmd = nvim -f -c \"Gdiff\" \"$MERGED\"
@@ -21,5 +20,3 @@
 	sort = version:refname
 [rerere]
 	enabled = true
-[diff]
-	noprefix = true
