@@ -20,3 +20,5 @@
 	sort = version:refname
 [rerere]
 	enabled = true
+[pager]
+	branch = false

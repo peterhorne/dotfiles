@@ -6,6 +6,7 @@ Plug 'HerringtonDarkholme/yats.vim'
 Plug 'Raimondi/delimitMate'
 Plug 'Shougo/echodoc.vim'
 Plug 'Shougo/vimproc.vim', {'do' : 'make'}
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py --js-completer --rust-completer' }
 Plug 'Yggdroot/indentLine'
 Plug 'bogado/file-line'
 Plug 'easymotion/vim-easymotion'
@@ -13,10 +14,6 @@ Plug 'junegunn/fzf.vim'
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'morhetz/gruvbox'
 Plug 'ntpeters/vim-better-whitespace'
-Plug 'prabirshrestha/async.vim'
-Plug 'prabirshrestha/asyncomplete-lsp.vim'
-Plug 'prabirshrestha/asyncomplete.vim'
-Plug 'prabirshrestha/vim-lsp'
 Plug 'sbdchd/neoformat'
 Plug 'scrooloose/nerdtree'
 Plug 'sheerun/vim-polyglot'
@@ -31,7 +28,6 @@ Plug 'tpope/vim-rhubarb'
 Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
-Plug 'w0rp/ale'
 
 call plug#end()
 
@@ -186,31 +182,26 @@ let g:ale_set_loclist = 0
 let g:ale_set_quickfix = 0
 let g:ale_echo_msg_format = '[%linter%] %s'
 
+" YouCompleteMe
+let g:ycm_error_symbol = '•'
+let g:ycm_error_symbol = '•'
+let g:ycm_autoclose_preview_window_after_completion = 1
+
+augroup peter#ycm#typescript
+  autocmd!
+  autocmd FileType javascript,rust,typescript nnoremap <buffer> K :YcmCompleter GetType<CR>
+  autocmd FileType javascript,rust,typescript nnoremap <buffer> <C-]> :YcmCompleter GoTo<CR>
+  autocmd FileType javascript,rust,typescript nnoremap <buffer> <C-w><C-]> :split<CR> :YcmCompleter GoTo<CR>
+  autocmd FileType javascript,rust,typescript nnoremap <buffer> <C-^> :YcmCompleter GoToReferences<CR>
+  autocmd FileType javascript,rust,typescript nnoremap <buffer> <leader>f :YcmCompleter FixIt<CR>
+augroup END
+
 " Always render sign column
-augroup peter#ale#sign
+augroup peter#sign
   autocmd!
   autocmd BufEnter * sign define dummy
   autocmd BufEnter * execute 'sign place 9999 line=1 name=dummy buffer=' . bufnr('')
 augroup END
-
-" vim-lsp
-if executable('typescript-language-server')
-  au User lsp_setup call lsp#register_server({
-    \ 'name': 'typescript-language-server',
-    \ 'cmd': {server_info->[&shell, &shellcmdflag, 'typescript-language-server --stdio']},
-    \ 'root_uri':{server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'tsconfig.json'))},
-    \ 'whitelist': ['typescript'],
-    \ })
-
-  augroup peter#vim-lsp#typescript
-    autocmd!
-    autocmd FileType typescript nnoremap K :LspHover<cr>
-    autocmd FileType typescript nnoremap <buffer> <C-]> :LspDefinition<cr>
-    autocmd FileType typescript nnoremap <buffer> <C-^> :LspReferences<cr>
-    autocmd FileType *.lsp-hover nnoremap <buffer><silent> q :quit<cr>
-    autocmd FileType typescript setlocal omnifunc=lsp#complete
-  augroup END
-endif
 
 " indentLine
 let g:indentLine_char = '│'
@@ -221,3 +212,17 @@ let g:neoformat_sql_sqlformat = {
       \ 'args': ['--keywords upper --identifiers lower --wrap_after 80 --reindent', '-'],
       \ 'stdin': 1,
       \ }
+
+" echodoc
+set noshowmode
+let g:echodoc#enable_at_startup = 1
+
+" patch YCM to fix delimitMate
+" https://github.com/Valloric/YouCompleteMe/issues/2696
+imap <silent> <BS> <C-R>=YcmOnDeleteChar()<CR><Plug>delimitMateBS
+function! YcmOnDeleteChar()
+  if pumvisible()
+    return "\<C-y>"
+  endif
+  return ""
+endfunction
