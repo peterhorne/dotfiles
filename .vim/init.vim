@@ -29,6 +29,9 @@ Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 
+Plug 'machakann/vim-highlightedyank'
+Plug 'jlanzarotta/bufexplorer'
+
 call plug#end()
 
 " Make vim pretty
@@ -226,3 +229,14 @@ function! YcmOnDeleteChar()
   endif
   return ""
 endfunction
+
+" Use ripgrep
+set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
+
+" highlighted-yank
+let g:highlightedyank_highlight_duration = 250
+
+" bufexplorer
+let g:bufExplorerDefaultHelp = 0
+let g:bufExplorerShowRelativePath = 1
+let g:bufExplorerSplitOutPathName = 0
