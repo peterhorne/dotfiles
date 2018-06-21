@@ -89,7 +89,8 @@ set incsearch
 set ignorecase
 set smartcase
 
-" Live substitution
+" Ergonomic substitution
+set gdefault
 set inccommand=nosplit
 
 " Fix backspace
