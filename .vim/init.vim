@@ -16,7 +16,6 @@ Plug 'ntpeters/vim-better-whitespace'
 Plug 'sbdchd/neoformat'
 Plug 'scrooloose/nerdtree'
 Plug 'sheerun/vim-polyglot'
-Plug 'ton/vim-bufsurf'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-endwise'
@@ -168,10 +167,6 @@ nnoremap gr :Start git reset<CR><CR>
 " Fugitive diffget mappings
 nnoremap dgt :diffget //2<CR>:diffupdate<CR>
 nnoremap dgm :diffget //3<CR>:diffupdate<CR>
-
-" bufsurf (autocmd used to overwrite vim-unimpaired bindings)
-autocmd VimEnter * noremap [b :BufSurfBack<CR>
-autocmd VimEnter * noremap ]b :BufSurfForward<CR>
 
 " delimitMate
 let delimitMate_expand_cr = 2
