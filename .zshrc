@@ -6,6 +6,10 @@ alias ls='ls -G'
 setopt auto_cd
 bindkey '^r' history-incremental-search-backward
 
+autoload -z edit-command-line
+zle -N edit-command-line
+bindkey "^x^e" edit-command-line
+
 export PAGER=less
 export LESS=R # clear screen after `git log`
 
