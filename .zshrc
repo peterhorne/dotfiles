@@ -84,6 +84,7 @@ eval "$(direnv hook zsh)"
 
 # go
 export GOPATH="$HOME/.go"
+export PATH="$GOPATH/bin:$PATH"
 
 # latex
 export PATH="/Library/TeX/texbin:$PATH"
