@@ -35,7 +35,6 @@ call plug#end()
 set termguicolors
 set background=dark
 colorscheme gruvbox
-let g:gruvbox_contrast_dark="soft"
 let g:gruvbox_italic=1
 syntax enable
 
