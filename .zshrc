@@ -100,6 +100,11 @@ fcs() { # FZF copy (git) SHA
 }
 
 # Useful aliases
+function take() {
+  mkdir -p $1
+  cd $1
+}
+
 alias lower="tr '[:upper:]' '[:lower:]'"
 alias upper="tr '[:lower:]' '[:upper:]'"
 alias uuid="uuidgen | lower"
