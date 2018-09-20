@@ -2,10 +2,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 
 Plug '/usr/local/opt/fzf'
 Plug 'AndrewRadev/splitjoin.vim'
-Plug 'Raimondi/delimitMate'
-Plug 'Shougo/echodoc.vim'
-Plug 'Shougo/vimproc.vim', {'do' : 'make'}
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py --js-completer --rust-completer' }
+" Plug 'Raimondi/delimitMate'
 Plug 'Yggdroot/indentLine'
 Plug 'bogado/file-line'
 Plug 'easymotion/vim-easymotion'
@@ -18,7 +15,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-endwise'
+" Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-rhubarb'
@@ -28,6 +25,12 @@ Plug 'tpope/vim-unimpaired'
 
 Plug 'machakann/vim-highlightedyank'
 Plug 'jlanzarotta/bufexplorer'
+Plug 'Olical/vim-enmasse'
+Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
+" Plug 'itchyny/lightline.vim'
+Plug 'cohama/lexima.vim'
+" Plug 'Shougo/denite.nvim'
+Plug 'ianks/vim-tsx'
 
 call plug#end()
 
@@ -38,9 +41,6 @@ colorscheme gruvbox
 let g:gruvbox_italic=1
 syntax enable
 
-" Always show status bar
-set laststatus=2
-
 " Enable mouse support (useful for resizing windows)
 set mouse=a
 
@@ -49,6 +49,9 @@ set spell
 
 " Line numbers
 set nu
+
+" Always show signs
+set signcolumn=yes
 
 " Highlight 80th column
 set colorcolumn=80
@@ -99,6 +102,12 @@ set splitbelow
 " Improve suggestions UI
 set completeopt=menuone,preview
 
+" Always show status bar
+set laststatus=2
+
+" Rebind <Leader>
+" let mapleader = " "
+
 " Navigate splits with ctrl-jklh
 map <c-j> <c-w>j
 map <c-k> <c-w>k
@@ -124,8 +133,8 @@ let g:markdown_fenced_languages = ['typescript']
 map <Leader>n :NERDTree<CR>
 map <Leader><Leader>n :NERDTreeFind<CR>
 
-let NERDTreeMinimalUI=1
 let NERDTreeAutoDeleteBuffer=1
+let NERDTreeMinimalUI=1
 let NERDTreeQuitOnOpen=1
 
 " FZF
@@ -171,58 +180,6 @@ nnoremap dgm :diffget //3<CR>:diffupdate<CR>
 let delimitMate_expand_cr = 2
 let delimitMate_expand_space = 1
 
-" Ale
-let g:ale_sign_error = '•'
-let g:ale_sign_warning = '•'
-let g:ale_set_loclist = 0
-let g:ale_set_quickfix = 0
-let g:ale_echo_msg_format = '[%linter%] %s'
-
-" YouCompleteMe
-let g:ycm_error_symbol = '•'
-let g:ycm_error_symbol = '•'
-let g:ycm_autoclose_preview_window_after_completion = 1
-
-augroup peter#ycm#typescript
-  autocmd!
-  autocmd FileType javascript,rust,typescript nnoremap <buffer> K :YcmCompleter GetType<CR>
-  autocmd FileType javascript,rust,typescript nnoremap <buffer> <C-]> :YcmCompleter GoTo<CR>
-  autocmd FileType javascript,rust,typescript nnoremap <buffer> <C-w><C-]> :split<CR> :YcmCompleter GoTo<CR>
-  autocmd FileType javascript,rust,typescript nnoremap <buffer> <C-^> :YcmCompleter GoToReferences<CR>
-  autocmd FileType javascript,rust,typescript nnoremap <buffer> <leader>f :YcmCompleter FixIt<CR>
-augroup END
-
-" Always render sign column
-augroup peter#sign
-  autocmd!
-  autocmd BufEnter * sign define dummy
-  autocmd BufEnter * execute 'sign place 9999 line=1 name=dummy buffer=' . bufnr('')
-augroup END
-
-" indentLine
-let g:indentLine_char = '│'
-
-" Neoformat
-let g:neoformat_sql_sqlformat = {
-      \ 'exe': 'sqlformat',
-      \ 'args': ['--keywords upper --identifiers lower --wrap_after 80 --reindent', '-'],
-      \ 'stdin': 1,
-      \ }
-
-" echodoc
-set noshowmode
-let g:echodoc#enable_at_startup = 1
-
-" patch YCM to fix delimitMate
-" https://github.com/Valloric/YouCompleteMe/issues/2696
-imap <silent> <BS> <C-R>=YcmOnDeleteChar()<CR><Plug>delimitMateBS
-function! YcmOnDeleteChar()
-  if pumvisible()
-    return "\<C-y>"
-  endif
-  return ""
-endfunction
-
 " Use ripgrep
 set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
 
@@ -233,3 +190,82 @@ let g:highlightedyank_highlight_duration = 250
 let g:bufExplorerDefaultHelp = 0
 let g:bufExplorerShowRelativePath = 1
 let g:bufExplorerSplitOutPathName = 0
+
+" indentLine
+let g:indentLine_char = '│'
+
+" Better display for messages
+set cmdheight=2
+
+" Use tab for trigger completion with characters ahead and navigate.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+" Use <c-space> for trigger completion.
+inoremap <silent><expr> <c-space> coc#refresh()
+
+" Use <C-p> to complete 'word', 'emoji' and 'include' sources
+imap <silent> <C-p> <Plug>(coc-complete-custom)
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" Use <cr> for confirm completion.
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+
+nmap <silent> [c <Plug>(coc-diagnostic-prev)
+nmap <silent> ]c <Plug>(coc-diagnostic-next)
+
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gt <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+nmap <silent> gh :call <SID>show_documentation()<CR>
+nmap <silent> ge :call <SID>show_diagnostics()<CR>
+
+function! s:show_diagnostics()
+  for diagnostic in CocAction('diagnosticList')
+    if line(".") == diagnostic.lnum
+      echo diagnostic.message
+    endif
+  endfor
+endfunction
+
+function! s:show_documentation()
+  if &filetype == 'vim'
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+" Show signature help while editing
+autocmd CursorHoldI,CursorMovedI * silent! call CocAction('showSignatureHelp')
+autocmd CursorHold,CursorMoved * silent! call CocAction('showSignatureHelp')
+
+" Highlight symbol under cursor on CursorHold
+" autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" Remap for rename current word
+nmap gr <Plug>(coc-rename)
+
+" Remap for do codeAction of selected region, ex: `<leader>aap` for current paragraph
+vmap ga <Plug>(coc-codeaction-selected)
+" nmap gas <Plug>(coc-codeaction-selected)
+
+" Remap for do codeAction of current line
+nmap ga <Plug>(coc-codeaction)
+
+" Use `:Format` for format current buffer
+" command! -nargs=0 Format :call CocAction('format')
+
+hi SignColumn guibg=bg
+hi def link CocErrorSign GruvboxRed
+hi def link CocWarningSign GruvboxOrange
+hi def link CocInfoSign GruvboxYellow
+hi def link CocHintSign GruvboxPurple
