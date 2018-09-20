@@ -81,6 +81,10 @@ alias j='fasd_cd -d'
 # rustup
 export PATH="$HOME/.cargo/bin:$PATH"
 
+# nvm
+export NVM_DIR="$HOME/.nvm"
+[ -f /usr/local/opt/nvm/nvm.sh ] && source /usr/local/opt/nvm/nvm.sh
+
 # git
 alias cpg='git rev-parse HEAD | tr -d "\n" | pbcopy'
 alias cpgp='cpg && git push'
