@@ -51,6 +51,11 @@ else
   PROMPT='%c$(git_prompt_info)'
 fi
 
+# set iterm2 tab titles to current dir
+precmd() {
+  echo -ne "\e]1;${PWD##*/}\a"
+}
+
 # ^Z to foreground the last suspended job.
 foreground-current-job() { fg; }
 zle -N foreground-current-job
