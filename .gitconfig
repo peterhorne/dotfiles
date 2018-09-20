@@ -24,3 +24,5 @@
 	branch = false
 [rebase]
 	autoSquash = true
+[log]
+	date = relative
