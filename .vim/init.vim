@@ -2,35 +2,30 @@ call plug#begin('~/.local/share/nvim/plugged')
 
 Plug '/usr/local/opt/fzf'
 Plug 'AndrewRadev/splitjoin.vim'
-" Plug 'Raimondi/delimitMate'
+Plug 'Olical/vim-enmasse'
+Plug 'Raimondi/delimitMate'
 Plug 'Yggdroot/indentLine'
 Plug 'bogado/file-line'
 Plug 'easymotion/vim-easymotion'
+Plug 'jlanzarotta/bufexplorer'
 Plug 'junegunn/fzf.vim'
+Plug 'machakann/vim-highlightedyank'
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'morhetz/gruvbox'
+Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'sbdchd/neoformat'
 Plug 'scrooloose/nerdtree'
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-commentary'
-" Plug 'tpope/vim-endwise'
+Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-rhubarb'
 Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
-
-Plug 'machakann/vim-highlightedyank'
-Plug 'jlanzarotta/bufexplorer'
-Plug 'Olical/vim-enmasse'
-Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
-" Plug 'itchyny/lightline.vim'
-Plug 'cohama/lexima.vim'
-" Plug 'Shougo/denite.nvim'
-Plug 'ianks/vim-tsx'
 
 call plug#end()
 
@@ -102,9 +97,6 @@ set splitbelow
 " Improve suggestions UI
 set completeopt=menuone,preview
 
-" Always show status bar
-set laststatus=2
-
 " Rebind <Leader>
 " let mapleader = " "
 
@@ -124,10 +116,17 @@ noremap œ :tabclose<CR>
 nnoremap <C-e> 4<C-e>
 nnoremap <C-y> 4<C-y>
 
+" Why isn't this default?
+nnoremap Y y$
+
 " Configure syntax
 let g:polyglot_disabled = ['markdown']
 let g:markdown_syntax_conceal = 0
 let g:markdown_fenced_languages = ['typescript']
+
+" Add support for jsx/tsx files
+au BufNewFile,BufRead *.jsx set filetype=javascript.jsx
+au BufNewFile,BufRead *.tsx set filetype=typescript.tsx
 
 " NERDTree
 map <Leader>n :NERDTree<CR>
@@ -198,11 +197,11 @@ let g:indentLine_char = '│'
 set cmdheight=2
 
 " Use tab for trigger completion with characters ahead and navigate.
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+" inoremap <silent><expr> <TAB>
+"       \ pumvisible() ? "\<C-n>" :
+"       \ <SID>check_back_space() ? "\<TAB>" :
+"       \ coc#refresh()
+" inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
 " Use <c-space> for trigger completion.
 inoremap <silent><expr> <c-space> coc#refresh()
@@ -216,7 +215,7 @@ function! s:check_back_space() abort
 endfunction
 
 " Use <cr> for confirm completion.
-inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+" inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
 nmap <silent> [c <Plug>(coc-diagnostic-prev)
 nmap <silent> ]c <Plug>(coc-diagnostic-next)
@@ -246,13 +245,13 @@ endfunction
 
 " Show signature help while editing
 autocmd CursorHoldI,CursorMovedI * silent! call CocAction('showSignatureHelp')
-autocmd CursorHold,CursorMoved * silent! call CocAction('showSignatureHelp')
+" autocmd CursorHold,CursorMoved * silent! call CocAction('showSignatureHelp')
 
 " Highlight symbol under cursor on CursorHold
 " autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " Remap for rename current word
-nmap gr <Plug>(coc-rename)
+" nmap gr <Plug>(coc-rename)
 
 " Remap for do codeAction of selected region, ex: `<leader>aap` for current paragraph
 vmap ga <Plug>(coc-codeaction-selected)
@@ -269,3 +268,50 @@ hi def link CocErrorSign GruvboxRed
 hi def link CocWarningSign GruvboxOrange
 hi def link CocInfoSign GruvboxYellow
 hi def link CocHintSign GruvboxPurple
+
+hi StatusLine gui=NONE guibg=bg guifg=#928374
+hi StatusLineNC gui=NONE guibg=bg guifg=#928374
+
+set fillchars+=stl:─
+set fillchars+=stlnc:─
+
+function! Status(winnum)
+  let active = a:winnum == winnr()
+
+  function! Color(active, active_group, inactive_group, content)
+    if a:active
+      return '%#' . a:active_group . '#' . a:content . '%*'
+    else
+      return '%#' . a:inactive_group . '#' . a:content . '%*'
+    endif
+  endfunction
+
+  function! Padding()
+    return winwidth(0) - strlen(expand("%")) - 3
+  endfunction
+
+  let stat = ''
+  " let stat .= '──' " Pad gutter width
+  " let stat .= '───' " Pad line number width
+  let stat .= '%{repeat("─", (Padding() / 2) - 1 + 5)}' " Pad gutter width
+  let stat .= '  '
+  " let stat .= '%#GruvboxBg0#──%0*' " Pad filename with spaces
+  let stat .= Color(active, 'GruvboxFg1', 'GruvboxFg4', '%f %M') " Current file
+  let stat .= ' '
+  " let stat .= '%#GruvboxBg0#──%0*' " Pad filename with spaces
+  let stat .= '%{repeat("─", (Padding() / 2) - 1 - 4)}' " Pad gutter width
+
+  return stat
+endfunction
+
+function! s:RefreshStatus()
+  for nr in range(1, winnr('$'))
+    call setwinvar(nr, '&statusline', '%!Status(' . nr . ')')
+  endfor
+endfunction
+
+command! RefreshStatus :call <SID>RefreshStatus()
+augroup status
+  autocmd!
+  autocmd VimEnter,VimLeave,WinEnter,WinLeave,BufWinEnter,BufWinLeave * :RefreshStatus
+augroup END
