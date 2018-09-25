@@ -43,7 +43,7 @@ set mouse=a
 set spell
 
 " Line numbers
-set nu
+" set nu
 
 " Always show signs
 set signcolumn=yes
@@ -143,7 +143,7 @@ let g:fzf_colors =
   \ 'bg':      ['bg', 'Normal'],
   \ 'hl':      ['fg', 'Comment'],
   \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
-  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+  \ 'bg+':     ['bg', 'GruvboxBg0'],
   \ 'hl+':     ['fg', 'GruvboxBlue'],
   \ 'info':    ['fg', 'PFolded'],
   \ 'border':  ['fg', 'Ignore'],
@@ -152,6 +152,12 @@ let g:fzf_colors =
   \ 'marker':  ['fg', 'Keyword'],
   \ 'spinner': ['fg', 'Label'],
   \ 'header':  ['fg', 'Comment'] }
+
+function! s:fzf_statusline()
+  setlocal statusline=\ 
+endfunction
+
+autocmd! User FzfStatusLine call <SID>fzf_statusline()
 
 nnoremap <C-p> :FZF<CR>
 nnoremap <Leader>a :Ag<CR>
@@ -261,13 +267,17 @@ vmap ga <Plug>(coc-codeaction-selected)
 nmap ga <Plug>(coc-codeaction)
 
 " Use `:Format` for format current buffer
-" command! -nargs=0 Format :call CocAction('format')
+command! -nargs=0 Format :call CocAction('format')
+" autocmd BufWrite,CursorHold *.js,*.ts,*.tsx,*.css Format
+autocmd BufWrite,CursorHold *.js,*.ts,*.tsx,*.css silent! Neoformat
 
 hi SignColumn guibg=bg
 hi def link CocErrorSign GruvboxRed
 hi def link CocWarningSign GruvboxOrange
 hi def link CocInfoSign GruvboxYellow
 hi def link CocHintSign GruvboxPurple
+
+" Status line
 
 hi StatusLine gui=NONE guibg=bg guifg=#928374
 hi StatusLineNC gui=NONE guibg=bg guifg=#928374
@@ -293,13 +303,13 @@ function! Status(winnum)
   let stat = ''
   " let stat .= '──' " Pad gutter width
   " let stat .= '───' " Pad line number width
-  let stat .= '%{repeat("─", (Padding() / 2) - 1 + 5)}' " Pad gutter width
+  let stat .= '%{repeat("─", (Padding() / 2) - 1)}' " Pad gutter width
   let stat .= '  '
   " let stat .= '%#GruvboxBg0#──%0*' " Pad filename with spaces
   let stat .= Color(active, 'GruvboxFg1', 'GruvboxFg4', '%f %M') " Current file
   let stat .= ' '
   " let stat .= '%#GruvboxBg0#──%0*' " Pad filename with spaces
-  let stat .= '%{repeat("─", (Padding() / 2) - 1 - 4)}' " Pad gutter width
+  let stat .= '%{repeat("─", (Padding() / 2) - 1)}' " Pad gutter width
 
   return stat
 endfunction
