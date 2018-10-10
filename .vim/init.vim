@@ -203,7 +203,10 @@ let g:bufExplorerSplitOutPathName = 0
 let g:indentLine_char = '│'
 
 " Better display for messages
-set cmdheight=2
+" set cmdheight=2
+
+" Hide mode
+set noshowmode
 
 " Use tab for trigger completion with characters ahead and navigate.
 " inoremap <silent><expr> <TAB>
@@ -253,7 +256,7 @@ function! s:show_documentation()
 endfunction
 
 " Show signature help while editing
-autocmd CursorHoldI,CursorMovedI * silent! call CocAction('showSignatureHelp')
+" autocmd CursorHoldI,CursorMovedI * silent! call CocAction('showSignatureHelp')
 " autocmd CursorHold,CursorMoved * silent! call CocAction('showSignatureHelp')
 
 " Highlight symbol under cursor on CursorHold
@@ -285,46 +288,7 @@ hi def link CocHintSign GruvboxPurple
 hi StatusLine gui=NONE guibg=bg guifg=#928374
 hi StatusLineNC gui=NONE guibg=bg guifg=#928374
 
+set statusline=─
+
 set fillchars+=stl:─
 set fillchars+=stlnc:─
-
-function! Status(winnum)
-  let active = a:winnum == winnr()
-
-  function! Color(active, active_group, inactive_group, content)
-    if a:active
-      return '%#' . a:active_group . '#' . a:content . '%*'
-    else
-      return '%#' . a:inactive_group . '#' . a:content . '%*'
-    endif
-  endfunction
-
-  function! Padding()
-    return winwidth(0) - strlen(expand("%")) - 3
-  endfunction
-
-  let stat = ''
-  " let stat .= '──' " Pad gutter width
-  " let stat .= '───' " Pad line number width
-  let stat .= '%{repeat("─", (Padding() / 2) - 1)}' " Pad gutter width
-  let stat .= '  '
-  " let stat .= '%#GruvboxBg0#──%0*' " Pad filename with spaces
-  let stat .= Color(active, 'GruvboxFg1', 'GruvboxFg4', '%f %M') " Current file
-  let stat .= ' '
-  " let stat .= '%#GruvboxBg0#──%0*' " Pad filename with spaces
-  let stat .= '%{repeat("─", (Padding() / 2) - 1)}' " Pad gutter width
-
-  return stat
-endfunction
-
-function! s:RefreshStatus()
-  for nr in range(1, winnr('$'))
-    call setwinvar(nr, '&statusline', '%!Status(' . nr . ')')
-  endfor
-endfunction
-
-command! RefreshStatus :call <SID>RefreshStatus()
-augroup status
-  autocmd!
-  autocmd VimEnter,VimLeave,WinEnter,WinLeave,BufWinEnter,BufWinLeave * :RefreshStatus
-augroup END
