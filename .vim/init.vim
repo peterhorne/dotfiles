@@ -27,6 +27,8 @@ Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 
+Plug 'junegunn/goyo.vim'
+
 call plug#end()
 
 " Make vim pretty
@@ -173,9 +175,9 @@ let g:EasyMotion_smartcase = 1
 nmap s <Plug>(easymotion-s2)
 
 " Fugitive
-nnoremap gs :Gstatus<CR>
-nnoremap ga :Start git add . --verbose<CR><CR>
-nnoremap gr :Start git reset<CR><CR>
+" nnoremap gs :Gstatus<CR>
+" nnoremap ga :Start git add . --verbose<CR><CR>
+" nnoremap gr :Start git reset<CR><CR>
 
 " Fugitive diffget mappings
 nnoremap dgt :diffget //2<CR>:diffupdate<CR>
@@ -190,6 +192,7 @@ set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
 
 " highlighted-yank
 let g:highlightedyank_highlight_duration = 250
+hi HighlightedyankRegion guibg=#504945
 
 " bufexplorer
 let g:bufExplorerDefaultHelp = 0
@@ -213,7 +216,7 @@ set cmdheight=2
 inoremap <silent><expr> <c-space> coc#refresh()
 
 " Use <C-p> to complete 'word', 'emoji' and 'include' sources
-imap <silent> <C-p> <Plug>(coc-complete-custom)
+" imap <silent> <C-p> <Plug>(coc-complete-custom)
 
 function! s:check_back_space() abort
   let col = col('.') - 1
@@ -267,9 +270,9 @@ vmap ga <Plug>(coc-codeaction-selected)
 nmap ga <Plug>(coc-codeaction)
 
 " Use `:Format` for format current buffer
-command! -nargs=0 Format :call CocAction('format')
-" autocmd BufWrite,CursorHold *.js,*.ts,*.tsx,*.css Format
-autocmd BufWrite,CursorHold *.js,*.ts,*.tsx,*.css silent! Neoformat
+command! -nargs=0 Format :call CocActionAsync('format')
+" autocmd TextChanged,InsertLeave *.js,*.ts,*.tsx,*.css Format
+" autocmd CursorHold *.js,*.ts,*.tsx,*.css silent! Neoformat
 
 hi SignColumn guibg=bg
 hi def link CocErrorSign GruvboxRed
