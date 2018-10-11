@@ -28,6 +28,7 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 
 Plug 'junegunn/goyo.vim'
+Plug 'takac/vim-hardtime'
 
 call plug#end()
 
@@ -203,6 +204,11 @@ let g:bufExplorerSplitOutPathName = 0
 
 " indentLine
 let g:indentLine_char = '│'
+
+" hardtime
+let g:hardtime_default_on = 1
+let g:hardtime_ignore_quickfix = 1
+let g:hardtime_allow_different_key = 1
 
 " Better display for messages
 " set cmdheight=2
