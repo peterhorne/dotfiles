@@ -44,9 +44,6 @@ set mouse=a
 " Enable spell checking
 set spell
 
-" Line numbers
-" set nu
-
 " Always show signs
 set signcolumn=yes
 
@@ -76,7 +73,6 @@ set breakindent
 
 " Turn backup/swap files off
 set nobackup
-" set nowb
 set noswapfile
 
 " Ergonomic search
