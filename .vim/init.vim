@@ -156,7 +156,7 @@ let g:fzf_colors =
   \ 'header':  ['fg', 'Comment'] }
 
 function! s:fzf_statusline()
-  setlocal statusline=\ 
+  setlocal statusline=─
 endfunction
 
 autocmd! User FzfStatusLine call <SID>fzf_statusline()
