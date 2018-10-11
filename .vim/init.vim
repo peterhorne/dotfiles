@@ -161,8 +161,8 @@ endfunction
 
 autocmd! User FzfStatusLine call <SID>fzf_statusline()
 
-nnoremap <C-p> :FZF<CR>
-nnoremap <Leader>a :Ag<CR>
+nnoremap <silent> <C-p> :FZF<CR>
+nnoremap <silent> <Leader>a :Ag<CR>
 
 " Enable per-command history.
 let g:fzf_history_dir = '~/.local/share/fzf-history'
