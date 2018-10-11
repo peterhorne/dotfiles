@@ -95,6 +95,12 @@ set splitbelow
 " Improve suggestions UI
 set completeopt=menuone,preview
 
+" Don't skip wrapped lines
+nnoremap j gj
+nnoremap gj j
+nnoremap k gk
+nnoremap gk k
+
 " Rebind <Leader>
 " let mapleader = " "
 
