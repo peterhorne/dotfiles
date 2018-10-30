@@ -6,7 +6,7 @@
 [color]
 	ui = true
 [push]
-	default = simple
+	default = upstream
 [merge]
 	tool = fugitive
 	conflictstyle = diff3
