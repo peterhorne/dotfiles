@@ -27,9 +27,6 @@ Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 
-Plug 'junegunn/goyo.vim'
-Plug 'takac/vim-hardtime'
-
 call plug#end()
 
 " Make vim pretty
@@ -205,14 +202,6 @@ let g:bufExplorerSplitOutPathName = 0
 " indentLine
 let g:indentLine_char = '│'
 
-" hardtime
-let g:hardtime_default_on = 1
-let g:hardtime_ignore_quickfix = 1
-let g:hardtime_allow_different_key = 1
-
-" Better display for messages
-" set cmdheight=2
-
 " Hide mode
 set noshowmode
 
@@ -240,20 +229,21 @@ endfunction
 nmap <silent> [c <Plug>(coc-diagnostic-prev)
 nmap <silent> ]c <Plug>(coc-diagnostic-next)
 
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gt <Plug>(coc-type-definition)
+nmap <silent> <c-]> <Plug>(coc-definition)
+nmap <silent> <c-[> <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
-nmap <silent> gh :call <SID>show_documentation()<CR>
-nmap <silent> ge :call <SID>show_diagnostics()<CR>
+nmap <silent> K :call <SID>show_documentation()<CR>
+" nmap <silent> ge :call <SID>show_diagnostics()<CR>
+nmap <silent> ge <Plug>(coc-diagnostic-info)
 
-function! s:show_diagnostics()
-  for diagnostic in CocAction('diagnosticList')
-    if line(".") == diagnostic.lnum
-      echo diagnostic.message
-    endif
-  endfor
-endfunction
+" function! s:show_diagnostics()
+"   for diagnostic in CocAction('diagnosticList')
+"     if line(".") == diagnostic.lnum
+"       echo diagnostic.message
+"     endif
+"   endfor
+" endfunction
 
 function! s:show_documentation()
   if &filetype == 'vim'
@@ -291,12 +281,15 @@ hi def link CocWarningSign GruvboxOrange
 hi def link CocInfoSign GruvboxYellow
 hi def link CocHintSign GruvboxPurple
 
+let g:coc_auto_copen = 0
+autocmd User CocQuickfixChange :call fzf_quickfix#run()
+
 " Status line
 
 hi StatusLine gui=NONE guibg=bg guifg=#928374
 hi StatusLineNC gui=NONE guibg=bg guifg=#928374
 
-set statusline=─
+set statusline=\ %f\ %h%w%m%r\ 
 
 set fillchars+=stl:─
 set fillchars+=stlnc:─
