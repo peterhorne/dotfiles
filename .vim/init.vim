@@ -93,6 +93,16 @@ set splitbelow
 " Improve suggestions UI
 set completeopt=menuone,preview
 
+" Status line
+
+hi StatusLine gui=NONE guibg=bg guifg=#928374
+hi StatusLineNC gui=NONE guibg=bg guifg=#928374
+
+set statusline=\ %f\ %h%w%m%r\ 
+
+set fillchars+=stl:─
+set fillchars+=stlnc:─
+
 " Don't skip wrapped lines
 nnoremap j gj
 nnoremap gj j
@@ -226,16 +236,18 @@ endfunction
 " Use <cr> for confirm completion.
 " inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
-nmap <silent> [c <Plug>(coc-diagnostic-prev)
-nmap <silent> ]c <Plug>(coc-diagnostic-next)
 
-nmap <silent> <c-]> <Plug>(coc-definition)
-nmap <silent> <c-[> <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
-nmap <silent> K :call <SID>show_documentation()<CR>
-" nmap <silent> ge :call <SID>show_diagnostics()<CR>
-nmap <silent> ge <Plug>(coc-diagnostic-info)
+autocmd FileType typescript,typescript.tsx
+      \ nmap <silent> [c <Plug>(coc-diagnostic-prev) |
+      \ nmap <silent> ]c <Plug>(coc-diagnostic-next) |
+      \ nmap <silent> <c-]> <Plug>(coc-definition) |
+      \ nmap <silent> <c-[> <Plug>(coc-type-definition) |
+      \ nmap <silent> gi <Plug>(coc-implementation) |
+      \ nmap <silent> gr <Plug>(coc-references) |
+      \ nmap <silent> K :call <SID>show_documentation()<CR> |
+      \ nmap <silent> ge <Plug>(coc-diagnostic-info) |
+      \ vmap ga <Plug>(coc-codeaction-selected) |
+      \ nmap ga <Plug>(coc-codeaction)
 
 " function! s:show_diagnostics()
 "   for diagnostic in CocAction('diagnosticList')
@@ -254,26 +266,10 @@ function! s:show_documentation()
 endfunction
 
 " Show signature help while editing
-" autocmd CursorHoldI,CursorMovedI * silent! call CocAction('showSignatureHelp')
+autocmd CursorHoldI,CursorMovedI * silent! call CocAction('showSignatureHelp')
 " autocmd CursorHold,CursorMoved * silent! call CocAction('showSignatureHelp')
 
-" Highlight symbol under cursor on CursorHold
-" autocmd CursorHold * silent call CocActionAsync('highlight')
-
-" Remap for rename current word
-" nmap gr <Plug>(coc-rename)
-
-" Remap for do codeAction of selected region, ex: `<leader>aap` for current paragraph
-vmap ga <Plug>(coc-codeaction-selected)
-" nmap gas <Plug>(coc-codeaction-selected)
-
-" Remap for do codeAction of current line
-nmap ga <Plug>(coc-codeaction)
-
-" Use `:Format` for format current buffer
 command! -nargs=0 Format :call CocActionAsync('format')
-" autocmd TextChanged,InsertLeave *.js,*.ts,*.tsx,*.css Format
-" autocmd CursorHold *.js,*.ts,*.tsx,*.css silent! Neoformat
 
 hi SignColumn guibg=bg
 hi def link CocErrorSign GruvboxRed
@@ -281,15 +277,6 @@ hi def link CocWarningSign GruvboxOrange
 hi def link CocInfoSign GruvboxYellow
 hi def link CocHintSign GruvboxPurple
 
+" Use fzf when there are multiple 'jump to definition' targets
 let g:coc_auto_copen = 0
 autocmd User CocQuickfixChange :call fzf_quickfix#run()
-
-" Status line
-
-hi StatusLine gui=NONE guibg=bg guifg=#928374
-hi StatusLineNC gui=NONE guibg=bg guifg=#928374
-
-set statusline=\ %f\ %h%w%m%r\ 
-
-set fillchars+=stl:─
-set fillchars+=stlnc:─
