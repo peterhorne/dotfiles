@@ -12,7 +12,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'machakann/vim-highlightedyank'
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'morhetz/gruvbox'
-Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
+Plug 'neoclide/coc.nvim', {'do': 'yarn install'}
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'sbdchd/neoformat'
 Plug 'scrooloose/nerdtree'
@@ -26,6 +26,8 @@ Plug 'tpope/vim-rhubarb'
 Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
+
+Plug 'wellle/targets.vim'
 
 call plug#end()
 
@@ -90,18 +92,18 @@ set backspace=indent,eol,start
 set splitright
 set splitbelow
 
+" Trigger CursorHold autocommand sooner
+set updatetime=500
+
 " Improve suggestions UI
 set completeopt=menuone,preview
 
 " Status line
-
 hi StatusLine gui=NONE guibg=bg guifg=#928374
 hi StatusLineNC gui=NONE guibg=bg guifg=#928374
-
 set statusline=\ %f\ %h%w%m%r\ 
-
-set fillchars+=stl:─
-set fillchars+=stlnc:─
+set fillchars+=stl:·
+set fillchars+=stlnc:·
 
 " Don't skip wrapped lines
 nnoremap j gj
@@ -130,6 +132,10 @@ nnoremap <C-y> 4<C-y>
 
 " Why isn't this default?
 nnoremap Y y$
+
+" Highlight matching parenthesis
+hi! link MatchParen WarningMsg
+
 
 " Configure syntax
 let g:polyglot_disabled = ['markdown']
@@ -166,7 +172,7 @@ let g:fzf_colors =
   \ 'header':  ['fg', 'Comment'] }
 
 function! s:fzf_statusline()
-  setlocal statusline=─
+  setlocal statusline=·
 endfunction
 
 autocmd! User FzfStatusLine call <SID>fzf_statusline()
@@ -236,40 +242,35 @@ endfunction
 " Use <cr> for confirm completion.
 " inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
-
 autocmd FileType typescript,typescript.tsx
-      \ nmap <silent> [c <Plug>(coc-diagnostic-prev) |
-      \ nmap <silent> ]c <Plug>(coc-diagnostic-next) |
-      \ nmap <silent> <c-]> <Plug>(coc-definition) |
-      \ nmap <silent> <c-[> <Plug>(coc-type-definition) |
-      \ nmap <silent> gi <Plug>(coc-implementation) |
-      \ nmap <silent> gr <Plug>(coc-references) |
-      \ nmap <silent> K :call <SID>show_documentation()<CR> |
-      \ nmap <silent> ge <Plug>(coc-diagnostic-info) |
-      \ vmap ga <Plug>(coc-codeaction-selected) |
+      \ nmap <silent> [c <Plug>(coc-diagnostic-prev)|
+      \ nmap <silent> ]c <Plug>(coc-diagnostic-next)|
+      \ nmap <silent> <c-]> <Plug>(coc-definition)|
+      \ nmap <silent> <c-[> <Plug>(coc-type-definition)|
+      \ nmap <silent> gi <Plug>(coc-implementation)|
+      \ nmap <silent> gr <Plug>(coc-references)|
+      \ nmap <silent> K :call <SID>show_documentation()<CR>|
+      \ nmap <silent> ge <Plug>(coc-diagnostic-info)|
+      \ vmap ga <Plug>(coc-codeaction-selected)|
       \ nmap ga <Plug>(coc-codeaction)
 
-" function! s:show_diagnostics()
-"   for diagnostic in CocAction('diagnosticList')
-"     if line(".") == diagnostic.lnum
-"       echo diagnostic.message
-"     endif
-"   endfor
-" endfunction
-
 function! s:show_documentation()
-  if &filetype == 'vim'
-    execute 'h '.expand('<cword>')
-  else
-    call CocAction('doHover')
-  endif
+  call CocAction('doHover')
+  " nnoremap <silent> K :call <SID>hide_documentation()<CR>
 endfunction
+
+" function! s:hide_documentation()
+"   exec "pclose"
+"   nnoremap <silent> K :call <SID>show_documentation()<CR>
+" endfunction
 
 " Show signature help while editing
 autocmd CursorHoldI,CursorMovedI * silent! call CocAction('showSignatureHelp')
-" autocmd CursorHold,CursorMoved * silent! call CocAction('showSignatureHelp')
 
-command! -nargs=0 Format :call CocActionAsync('format')
+command! -nargs=0 Prettier :CocCommand prettier.formatFile
+" autocmd CursorHold *.ts,*.tsx,*.css Prettier
+" TODO: fix conflict with delimitMate and trigger on InsertLeave too
+" autocmd CursorHold,InsertLeave *.js,*.ts,*.tsx,*.css Prettier
 
 hi SignColumn guibg=bg
 hi def link CocErrorSign GruvboxRed
@@ -280,3 +281,8 @@ hi def link CocHintSign GruvboxPurple
 " Use fzf when there are multiple 'jump to definition' targets
 let g:coc_auto_copen = 0
 autocmd User CocQuickfixChange :call fzf_quickfix#run()
+
+" targets.vim
+autocmd User targets#mappings#user call targets#mappings#extend({
+  \ 'a': {'argument': [{'o': '[{([]', 'c': '[])}]', 's': ','}]}
+  \ })
