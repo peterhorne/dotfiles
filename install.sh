@@ -9,5 +9,5 @@ ln -s $ABSPATH/.gemrc ~/.gemrc
 ln -s $ABSPATH/.gitconfig ~/.gitconfig
 ln -s $ABSPATH/.hushlogin ~/.hushlogin
 ln -s $ABSPATH/.oh-my-zsh ~/.oh-my-zsh
-ln -s $ABSPATH/.vim ~/.vim
+ln -s $ABSPATH/.nvim ~/.config/nvim
 ln -s $ABSPATH/.zshrc ~/.zshrc
