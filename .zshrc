@@ -100,6 +100,9 @@ export PATH="$GOPATH/bin:$PATH"
 # latex
 export PATH="/Library/TeX/texbin:$PATH"
 
+# mongodb
+export PATH="/usr/local/opt/mongodb@3.4/bin:$PATH"
+
 # FZF
 export FZF_DEFAULT_COMMAND='ag -g "" --hidden'
 
