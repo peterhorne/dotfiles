@@ -104,7 +104,7 @@ export PATH="/Library/TeX/texbin:$PATH"
 export PATH="/usr/local/opt/mongodb@3.4/bin:$PATH"
 
 # FZF
-export FZF_DEFAULT_COMMAND='ag -g "" --hidden'
+export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
 
 fcs() { # FZF copy (git) SHA
   local commits commit
