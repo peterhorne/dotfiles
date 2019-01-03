@@ -14,6 +14,7 @@
 	up = pull --rebase
 	lg = log --graph --oneline --decorate
   fixup = !sh -c 'git add \"$@\" && git commit --fixup $(git rev-list -1 HEAD -- \"$@\")' -
+  done = !sh -c 'git checkout master && git branch -d \"$@\" && git up && git fetch -p' -
 [mergetool "fugitive"]
 	cmd = nvim -f -c \"Gdiff\" \"$MERGED\"
 [tag]
