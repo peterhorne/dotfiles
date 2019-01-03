@@ -242,27 +242,17 @@ endfunction
 " Use <cr> for confirm completion.
 " inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
-autocmd FileType typescript,typescript.tsx
-      \ nmap <silent> [c <Plug>(coc-diagnostic-prev)|
-      \ nmap <silent> ]c <Plug>(coc-diagnostic-next)|
-      \ nmap <silent> <c-]> <Plug>(coc-definition)|
-      \ nmap <silent> <c-[> <Plug>(coc-type-definition)|
-      \ nmap <silent> gi <Plug>(coc-implementation)|
-      \ nmap <silent> gr <Plug>(coc-references)|
-      \ nmap <silent> K :call <SID>show_documentation()<CR>|
-      \ nmap <silent> ge <Plug>(coc-diagnostic-info)|
+autocmd FileType typescript,typescript.tsx,ruby
+      \ nmap <buffer><silent> [c <Plug>(coc-diagnostic-prev)|
+      \ nmap <buffer><silent> ]c <Plug>(coc-diagnostic-next)|
+      \ nmap <buffer><silent> <c-]> <Plug>(coc-definition)|
+      \ nmap <buffer><silent> <c-[> <Plug>(coc-type-definition)|
+      \ nmap <buffer><silent> gi <Plug>(coc-implementation)|
+      \ nmap <buffer><silent> gr <Plug>(coc-references)|
+      \ nmap <buffer><silent> K :call CocAction('doHover')<CR>|
+      \ nmap <buffer><silent> ge <Plug>(coc-diagnostic-info)|
       \ vmap ga <Plug>(coc-codeaction-selected)|
       \ nmap ga <Plug>(coc-codeaction)
-
-function! s:show_documentation()
-  call CocAction('doHover')
-  " nnoremap <silent> K :call <SID>hide_documentation()<CR>
-endfunction
-
-" function! s:hide_documentation()
-"   exec "pclose"
-"   nnoremap <silent> K :call <SID>show_documentation()<CR>
-" endfunction
 
 " Show signature help while editing
 autocmd CursorHoldI,CursorMovedI * silent! call CocAction('showSignatureHelp')
