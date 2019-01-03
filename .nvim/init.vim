@@ -242,7 +242,7 @@ endfunction
 " Use <cr> for confirm completion.
 " inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
-autocmd FileType typescript,typescript.tsx,ruby
+autocmd FileType typescript,typescript.tsx,javascript,javascript.jsx,ruby
       \ nmap <buffer><silent> [c <Plug>(coc-diagnostic-prev)|
       \ nmap <buffer><silent> ]c <Plug>(coc-diagnostic-next)|
       \ nmap <buffer><silent> <c-]> <Plug>(coc-definition)|
