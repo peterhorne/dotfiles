@@ -30,6 +30,9 @@ setopt share_history          # share command history data
 # Case-insensitive tab-completion
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|=*' 'l:|=* r:|=*'
 
+# Don't consume trailing space after tab-completion when typing `|`
+ZLE_REMOVE_SUFFIX_CHARS=""
+
 export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
 export EDITOR='nvim'
 
