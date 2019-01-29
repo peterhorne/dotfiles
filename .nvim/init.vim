@@ -28,6 +28,7 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 
 Plug 'wellle/targets.vim'
+Plug 'simeji/winresizer'
 
 call plug#end()
 
@@ -269,3 +270,8 @@ hi def link CocHintSign GruvboxPurple
 autocmd User targets#mappings#user call targets#mappings#extend({
   \ 'a': {'argument': [{'o': '[{([]', 'c': '[])}]', 's': ','}]}
   \ })
+
+" winresizer
+let g:winresizer_start_key = '<c-t>'
+let g:winresizer_vert_resize = 1
+let g:winresizer_horiz_resize = 1
