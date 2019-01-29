@@ -265,10 +265,6 @@ hi def link CocWarningSign GruvboxOrange
 hi def link CocInfoSign GruvboxYellow
 hi def link CocHintSign GruvboxPurple
 
-" Use fzf when there are multiple 'jump to definition' targets
-let g:coc_auto_copen = 0
-autocmd User CocQuickfixChange :call fzf_quickfix#run()
-
 " targets.vim
 autocmd User targets#mappings#user call targets#mappings#extend({
   \ 'a': {'argument': [{'o': '[{([]', 'c': '[])}]', 's': ','}]}
