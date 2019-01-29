@@ -183,9 +183,6 @@ nnoremap <silent> <Leader>a :Rg<CR>
 " Enable per-command history.
 let g:fzf_history_dir = '~/.local/share/fzf-history'
 
-" Ignore filenames when searcing
-command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, {'options': '--delimiter : --nth 4.. '}, <bang>0)
-
 " Easymotion
 let g:EasyMotion_smartcase = 1
 nmap s <Plug>(easymotion-s2)
