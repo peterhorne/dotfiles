@@ -6,14 +6,15 @@ Plug 'Olical/vim-enmasse'
 Plug 'Raimondi/delimitMate'
 Plug 'Yggdroot/indentLine'
 Plug 'bogado/file-line'
+Plug 'bootleq/vim-cycle'
 Plug 'easymotion/vim-easymotion'
-Plug 'jlanzarotta/bufexplorer'
 Plug 'junegunn/fzf.vim'
 Plug 'machakann/vim-highlightedyank'
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'morhetz/gruvbox'
 Plug 'neoclide/coc.nvim', {'do': 'yarn install'}
 Plug 'ntpeters/vim-better-whitespace'
+Plug 'samoshkin/vim-mergetool'
 Plug 'sbdchd/neoformat'
 Plug 'scrooloose/nerdtree'
 Plug 'sheerun/vim-polyglot'
@@ -26,9 +27,7 @@ Plug 'tpope/vim-rhubarb'
 Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
-
 Plug 'wellle/targets.vim'
-Plug 'simeji/winresizer'
 
 call plug#end()
 
@@ -112,8 +111,8 @@ nnoremap gj j
 nnoremap k gk
 nnoremap gk k
 
-" Rebind <Leader>
-" let mapleader = " "
+" Rebind <leader>
+let mapleader = " "
 
 " Navigate splits with ctrl-jklh
 map <c-j> <c-w>j
@@ -134,9 +133,15 @@ nnoremap <C-y> 4<C-y>
 " Why isn't this default?
 nnoremap Y y$
 
+" Remove redundant keystrokes
+nnoremap ! :!
+
+" Jump to start/end line
+noremap H ^
+noremap L $
+
 " Highlight matching parenthesis
 hi! link MatchParen WarningMsg
-
 
 " Configure syntax
 let g:polyglot_disabled = ['markdown']
@@ -148,12 +153,13 @@ au BufNewFile,BufRead *.jsx set filetype=javascript.jsx
 au BufNewFile,BufRead *.tsx set filetype=typescript.tsx
 
 " NERDTree
-map <Leader>n :NERDTree<CR>
-map <Leader><Leader>n :NERDTreeFind<CR>
+map g~ :e .<CR>
+map g. :e %:h<CR>
 
 let NERDTreeAutoDeleteBuffer=1
 let NERDTreeMinimalUI=1
 let NERDTreeQuitOnOpen=1
+let NERDTreeHijackNetrw=1
 
 " FZF
 " Customize fzf colors to match your color scheme
@@ -178,8 +184,12 @@ endfunction
 
 autocmd! User FzfStatusLine call <SID>fzf_statusline()
 
-nnoremap <silent> <C-p> :FZF<CR>
-nnoremap <silent> <Leader>a :Rg <C-R><C-W><CR>
+nnoremap <silent> <c-p> :FZF<CR>
+nnoremap <silent> <leader>b :Buffers<CR>
+nnoremap <silent> <leader>l :BLines<CR>
+nnoremap <silent> <leader>g :Rg <C-R><C-W><CR>
+nnoremap <silent> <leader>h :BCommits<CR>
+nnoremap <silent> <leader>f :Filetypes<CR>
 
 " Enable per-command history.
 let g:fzf_history_dir = '~/.local/share/fzf-history'
@@ -193,9 +203,9 @@ nmap s <Plug>(easymotion-s2)
 " nnoremap ga :Start git add . --verbose<CR><CR>
 " nnoremap gr :Start git reset<CR><CR>
 
-" Fugitive diffget mappings
-nnoremap dgt :diffget //2<CR>:diffupdate<CR>
-nnoremap dgm :diffget //3<CR>:diffupdate<CR>
+" Diff mappings
+nnoremap <leader>dg :diffget<CR>
+nnoremap <leader>dp :diffput<CR>
 
 " delimitMate
 let delimitMate_expand_cr = 2
@@ -208,37 +218,14 @@ set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
 let g:highlightedyank_highlight_duration = 250
 hi HighlightedyankRegion guibg=#504945
 
-" bufexplorer
-let g:bufExplorerDefaultHelp = 0
-let g:bufExplorerShowRelativePath = 1
-let g:bufExplorerSplitOutPathName = 0
-
 " indentLine
 let g:indentLine_char = '│'
 
 " Hide mode
 set noshowmode
 
-" Use tab for trigger completion with characters ahead and navigate.
-" inoremap <silent><expr> <TAB>
-"       \ pumvisible() ? "\<C-n>" :
-"       \ <SID>check_back_space() ? "\<TAB>" :
-"       \ coc#refresh()
-" inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
 " Use <c-space> for trigger completion.
 inoremap <silent><expr> <c-space> coc#refresh()
-
-" Use <C-p> to complete 'word', 'emoji' and 'include' sources
-" imap <silent> <C-p> <Plug>(coc-complete-custom)
-
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-
-" Use <cr> for confirm completion.
-" inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
 autocmd FileType typescript,typescript.tsx,javascript,javascript.jsx,ruby
       \ nmap <buffer><silent> [c <Plug>(coc-diagnostic-prev)|
@@ -253,7 +240,7 @@ autocmd FileType typescript,typescript.tsx,javascript,javascript.jsx,ruby
       \ nmap ga <Plug>(coc-codeaction)
 
 " Show signature help while editing
-autocmd CursorHoldI,CursorMovedI * silent! call CocAction('showSignatureHelp')
+autocmd CursorHoldI,CursorMovedI * silent! call CocActionAsync('showSignatureHelp')
 
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
 " autocmd CursorHold *.ts,*.tsx,*.css Prettier
@@ -275,3 +262,17 @@ autocmd User targets#mappings#user call targets#mappings#extend({
 let g:winresizer_start_key = '<c-t>'
 let g:winresizer_vert_resize = 1
 let g:winresizer_horiz_resize = 1
+
+" vim-mergetool
+let g:mergetool_layout = 'mr'
+let g:mergetool_prefer_revision = 'local'
+nmap gm <plug>(MergetoolToggle)
+
+" vim-cycle
+let g:cycle_no_mappings = 1
+nmap <silent> <c-a> <Plug>CycleNext
+vmap <silent> <c-a> <Plug>CycleNext
+nmap <silent> <c-x> <Plug>CyclePrev
+vmap <silent> <c-x> <Plug>CyclePrev
+noremap <silent> <Plug>CycleFallbackNext <c-a>
+noremap <silent> <Plug>CycleFallbackPrev <c-x>
