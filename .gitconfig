@@ -8,15 +8,19 @@
 [push]
 	default = upstream
 [merge]
-	tool = fugitive
+	tool = vim_mergetool
 	conflictstyle = diff3
 [alias]
 	up = pull --rebase
 	lg = log --graph --oneline --decorate
   fixup = !sh -c 'git add \"$@\" && git commit --fixup $(git rev-list -1 HEAD -- \"$@\")' -
   done = !sh -c 'git checkout master && git branch -d \"$@\" && git up && git fetch -p' -
-[mergetool "fugitive"]
-	cmd = nvim -f -c \"Gdiff\" \"$MERGED\"
+  squash = !sh -c 'GIT_SEQUENCE_EDITOR=: git rebase -i head~10 --autosquash' -
+  amend = commit --amend
+[mergetool "vim_mergetool"]
+  cmd = nvim -f -c \"MergetoolStart\" \"$MERGED\" \"$BASE\" \"$LOCAL\" \"$REMOTE\"
+  trustExitCode = true
+  keepBackup = false
 [tag]
 	sort = version:refname
 [rerere]
