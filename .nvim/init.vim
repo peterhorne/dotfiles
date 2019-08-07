@@ -12,7 +12,14 @@ Plug 'junegunn/fzf.vim'
 Plug 'machakann/vim-highlightedyank'
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'morhetz/gruvbox'
-Plug 'neoclide/coc.nvim', {'do': 'yarn install'}
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-rls', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-css', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-prettier', {'do': 'yarn install --frozen-lockfile'}
+Plug 'voldikss/coc-browser', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-solargraph', {'do': 'yarn install --frozen-lockfile'}
+Plug 'amiralies/coc-elixir', {'do': 'yarn install --frozen-lockfile'}
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'samoshkin/vim-mergetool'
 Plug 'sbdchd/neoformat'
@@ -28,6 +35,9 @@ Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'wellle/targets.vim'
+
+Plug 'tpope/vim-obsession'
+Plug 'dhruvasagar/vim-prosession'
 
 call plug#end()
 
@@ -98,6 +108,16 @@ set updatetime=500
 " Improve suggestions UI
 set completeopt=menuone,preview
 
+" Cursor line
+augroup CursorLineOnlyInActiveWindow
+  autocmd!
+  autocmd VimEnter,WinEnter,BufWinEnter * setlocal cursorline
+  autocmd WinLeave * setlocal nocursorline
+augroup END
+
+hi clear CursorLine
+hi clear CursorLineNr
+
 " Status line
 hi StatusLine gui=NONE guibg=bg guifg=#928374
 hi StatusLineNC gui=NONE guibg=bg guifg=#928374
@@ -133,6 +153,9 @@ nnoremap <C-y> 4<C-y>
 " Why isn't this default?
 nnoremap Y y$
 
+" Yank in line (skip leading space)
+nnoremap yil ^y$
+
 " Remove redundant keystrokes
 nnoremap ! :!
 
@@ -147,10 +170,6 @@ hi! link MatchParen WarningMsg
 let g:polyglot_disabled = ['markdown']
 let g:markdown_syntax_conceal = 0
 let g:markdown_fenced_languages = ['typescript']
-
-" Add support for jsx/tsx files
-au BufNewFile,BufRead *.jsx set filetype=javascript.jsx
-au BufNewFile,BufRead *.tsx set filetype=typescript.tsx
 
 " NERDTree
 map g~ :e .<CR>
@@ -227,10 +246,14 @@ set noshowmode
 " Use <c-space> for trigger completion.
 inoremap <silent><expr> <c-space> coc#refresh()
 
+" autocmd FileType typescript,typescript.tsx,javascript,javascript.jsx,ruby,elixir
 autocmd FileType typescript,typescript.tsx,javascript,javascript.jsx,ruby
       \ nmap <buffer><silent> [c <Plug>(coc-diagnostic-prev)|
       \ nmap <buffer><silent> ]c <Plug>(coc-diagnostic-next)|
       \ nmap <buffer><silent> <c-]> <Plug>(coc-definition)|
+      \ nmap <buffer><silent> <c-w>} :call CocAction('jumpDefinition', 'split')<CR>|
+      \ nmap <buffer><silent> <c-w>] :call CocAction('jumpDefinition', 'vsplit')<CR>|
+      \ nmap <buffer><silent> <c-w><c-]> :call CocAction('jumpDefinition', 'vsplit')<CR>|
       \ nmap <buffer><silent> <c-[> <Plug>(coc-type-definition)|
       \ nmap <buffer><silent> gi <Plug>(coc-implementation)|
       \ nmap <buffer><silent> gr <Plug>(coc-references)|
@@ -276,3 +299,11 @@ nmap <silent> <c-x> <Plug>CyclePrev
 vmap <silent> <c-x> <Plug>CyclePrev
 noremap <silent> <Plug>CycleFallbackNext <c-a>
 noremap <silent> <Plug>CycleFallbackPrev <c-x>
+
+" Show line numbers
+set nu
+
+" vim-procession
+nnoremap <leader>p :call fzf#run({'source': prosession#ListSessions(), 'sink': 'Prosession', 'down': '30%'})<cr>
+let g:prosession_on_startup = 0
+let g:prosession_default_session = 0
