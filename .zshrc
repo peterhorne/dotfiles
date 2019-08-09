@@ -21,8 +21,9 @@ SAVEHIST=10000
 # History command configuration
 setopt extended_history       # record timestamp of command in HISTFILE
 setopt hist_expire_dups_first # delete duplicates first when HISTFILE size exceeds HISTSIZE
-setopt hist_ignore_dups       # ignore duplicated commands history list
+setopt hist_ignore_dups       # ignore repeated runs of the same command
 setopt hist_ignore_space      # ignore commands that start with space
+setopt hist_find_no_dups      # return unique results when searching history
 setopt hist_verify            # show command with history expansion to user before running it
 setopt inc_append_history     # add commands to HISTFILE in order of execution
 setopt share_history          # share command history data
@@ -108,6 +109,9 @@ export PATH="/usr/local/opt/mongodb@3.4/bin:$PATH"
 
 # FZF
 export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
+export FZF_CTRL_T_COMMAND=$FZF_DEFAULT_COMMAND
+export FZF_CTRL_R_OPTS='--reverse'
+source "/usr/local/opt/fzf/shell/key-bindings.zsh"
 
 fcs() { # FZF copy (git) SHA
   local commits commit
