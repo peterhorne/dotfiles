@@ -1,0 +1,6 @@
+brew "direnv"
+brew "fasd"
+brew "fzf"
+brew "git"
+brew "neovim"
+brew "zsh"
