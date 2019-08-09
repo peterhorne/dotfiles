@@ -11,3 +11,6 @@ ln -s $ABSPATH/.hushlogin ~/.hushlogin
 ln -s $ABSPATH/.oh-my-zsh ~/.oh-my-zsh
 ln -s $ABSPATH/.nvim/ ~/.config/nvim
 ln -s $ABSPATH/.zshrc ~/.zshrc
+
+defaults write com.googlecode.iterm2.plist PrefsCustomFolder -string $ABSPATH
+defaults write com.googlecode.iterm2.plist LoadPrefsFromCustomFolder -bool true
