@@ -83,6 +83,7 @@ set breakindent
 
 " Turn backup/swap files off
 set nobackup
+set nowritebackup
 set noswapfile
 
 " Ergonomic search
