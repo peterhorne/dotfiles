@@ -13,13 +13,6 @@ Plug 'machakann/vim-highlightedyank'
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'morhetz/gruvbox'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
-Plug 'neoclide/coc-rls', {'do': 'yarn install --frozen-lockfile'}
-Plug 'neoclide/coc-css', {'do': 'yarn install --frozen-lockfile'}
-Plug 'neoclide/coc-prettier', {'do': 'yarn install --frozen-lockfile'}
-Plug 'voldikss/coc-browser', {'do': 'yarn install --frozen-lockfile'}
-Plug 'neoclide/coc-solargraph', {'do': 'yarn install --frozen-lockfile'}
-Plug 'amiralies/coc-elixir', {'do': 'yarn install --frozen-lockfile'}
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'samoshkin/vim-mergetool'
 Plug 'sbdchd/neoformat'
@@ -40,6 +33,9 @@ Plug 'tpope/vim-obsession'
 Plug 'dhruvasagar/vim-prosession'
 
 call plug#end()
+
+call coc#add_extension('coc-tsserver', 'coc-rls', 'coc-css', 'coc-prettier', 'coc-browser', 'coc-solargraph', 'coc-elixir')
+
 
 " Make vim pretty
 set termguicolors
