@@ -51,9 +51,6 @@ set spell
 " Always show signs
 set signcolumn=yes
 
-" Highlight 80th column
-set colorcolumn=80
-
 " Enable hidden buffers (navigate away from buffer with unsaved changes)
 set hidden
 
