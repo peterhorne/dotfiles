@@ -133,3 +133,6 @@ if [ -f '/usr/local/bin/google-cloud-sdk/path.zsh.inc' ]; then source '/usr/loca
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/usr/local/bin/google-cloud-sdk/completion.zsh.inc' ]; then source '/usr/local/bin/google-cloud-sdk/completion.zsh.inc'; fi
+
+# npm is a clusterfuck
+export DISABLE_OPENCOLLECTIVE=true
