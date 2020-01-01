@@ -27,12 +27,17 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'wellle/targets.vim'
 
+" Plug 'gillyb/stable-windows'
 Plug 'tpope/vim-obsession'
 Plug 'dhruvasagar/vim-prosession'
+" Plug 'francoiscabrol/ranger.vim'
+" Plug 'liuchengxu/vim-which-key'
+Plug 'meain/vim-printer'
+Plug 'psliwka/vim-smoothie'
 
 call plug#end()
 
-call coc#add_extension('coc-tsserver', 'coc-rls', 'coc-css', 'coc-prettier', 'coc-browser', 'coc-solargraph', 'coc-elixir')
+call coc#add_extension('coc-tsserver', 'coc-json', 'coc-rls', 'coc-css', 'coc-prettier', 'coc-solargraph', 'coc-elixir')
 
 
 " Make vim pretty
@@ -108,14 +113,20 @@ augroup CursorLineOnlyInActiveWindow
 augroup END
 
 hi clear CursorLine
-hi clear CursorLineNr
+hi clear CursorLineNR
+hi link CursorLineNR GruvboxYellow
 
 " Status line
-hi StatusLine gui=NONE guibg=bg guifg=#928374
-hi StatusLineNC gui=NONE guibg=bg guifg=#928374
-set statusline=\ %f\ %h%w%m%r\ 
-set fillchars+=stl:·
-set fillchars+=stlnc:·
+" (StatusLine(NC) has ctermbg set to prevent fillchars being overridden
+hi clear StatusLine
+hi clear StatusLineNC
+hi clear VertSplit
+hi StatusLine ctermbg=black guifg=#7c6f64
+hi StatusLineNC ctermbg=white guifg=#7c6f64
+hi VertSplit guifg=#7c6f64
+
+set statusline=%=\ %f\ %h%w%m%r\ %=
+set fillchars=stl:-,stlnc:-,vert:\|,eob:¬
 
 " Don't skip wrapped lines
 nnoremap j gj
@@ -200,7 +211,6 @@ nnoremap <silent> <leader>b :Buffers<CR>
 nnoremap <silent> <leader>l :BLines<CR>
 nnoremap <silent> <leader>g :Rg <C-R><C-W><CR>
 nnoremap <silent> <leader>h :BCommits<CR>
-nnoremap <silent> <leader>f :Filetypes<CR>
 
 " Enable per-command history.
 let g:fzf_history_dir = '~/.local/share/fzf-history'
@@ -224,6 +234,7 @@ let delimitMate_expand_space = 1
 
 " Use ripgrep
 set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
+nnoremap <leader>r :Rg 
 
 " highlighted-yank
 let g:highlightedyank_highlight_duration = 250
@@ -238,29 +249,27 @@ set noshowmode
 " Use <c-space> for trigger completion.
 inoremap <silent><expr> <c-space> coc#refresh()
 
-" autocmd FileType typescript,typescript.tsx,javascript,javascript.jsx,ruby,elixir
-autocmd FileType typescript,typescript.tsx,javascript,javascript.jsx,ruby
+autocmd FileType typescript,typescriptreact,javascript,javascriptreact,ruby,elixir
       \ nmap <buffer><silent> [c <Plug>(coc-diagnostic-prev)|
       \ nmap <buffer><silent> ]c <Plug>(coc-diagnostic-next)|
       \ nmap <buffer><silent> <c-]> <Plug>(coc-definition)|
       \ nmap <buffer><silent> <c-w>} :call CocAction('jumpDefinition', 'split')<CR>|
       \ nmap <buffer><silent> <c-w>] :call CocAction('jumpDefinition', 'vsplit')<CR>|
       \ nmap <buffer><silent> <c-w><c-]> :call CocAction('jumpDefinition', 'vsplit')<CR>|
-      \ nmap <buffer><silent> <c-[> <Plug>(coc-type-definition)|
+      \ nmap <buffer><silent> gt <Plug>(coc-type-definition)|
       \ nmap <buffer><silent> gi <Plug>(coc-implementation)|
       \ nmap <buffer><silent> gr <Plug>(coc-references)|
       \ nmap <buffer><silent> K :call CocAction('doHover')<CR>|
       \ nmap <buffer><silent> ge <Plug>(coc-diagnostic-info)|
       \ vmap ga <Plug>(coc-codeaction-selected)|
       \ nmap ga <Plug>(coc-codeaction)
+      " \ nmap <silent> <C-d> <Plug>(coc-range-select)|
+      " \ xmap <silent> <C-d> <Plug>(coc-range-select)
 
 " Show signature help while editing
-autocmd CursorHoldI,CursorMovedI * silent! call CocActionAsync('showSignatureHelp')
+autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 
-command! -nargs=0 Prettier :CocCommand prettier.formatFile
-" autocmd CursorHold *.ts,*.tsx,*.css Prettier
-" TODO: fix conflict with delimitMate and trigger on InsertLeave too
-" autocmd CursorHold,InsertLeave *.js,*.ts,*.tsx,*.css Prettier
+nmap <silent> <leader>f :call CocActionAsync('runCommand', 'prettier.formatFile')<CR>
 
 hi SignColumn guibg=bg
 hi def link CocErrorSign GruvboxRed
@@ -299,3 +308,15 @@ set nu
 nnoremap <leader>p :call fzf#run({'source': prosession#ListSessions(), 'sink': 'Prosession', 'down': '30%'})<cr>
 let g:prosession_on_startup = 0
 let g:prosession_default_session = 0
+
+" vim-smoothie
+let g:smoothie_base_speed = 16
+let g:smoothie_update_interval = 1
+
+" vim-printer
+let g:vim_printer_items = {
+  \ 'javascript': 'console.log("== {$}", {$})',
+  \ 'javascriptreact': 'console.log("== {$}", {$})',
+  \ 'typescript': 'console.log("== {$}", {$})',
+  \ 'typescriptreact': 'console.log("== {$}", {$})',
+\ }
