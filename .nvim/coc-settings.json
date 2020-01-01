@@ -1,8 +1,13 @@
 {
-  "coc.preferences.autoTrigger": "none",
-  "coc.preferences.diagnostic.enableMessage": false,
-  "coc.preferences.diagnostic.errorSign": "•",
-  "coc.preferences.diagnostic.warningSign": "•",
-  "coc.preferences.diagnostic.infoSign": "•",
-  "coc.preferences.diagnostic.hintSign": "•"
+  "diagnostic.virtualText": true,
+  "diagnostic.virtualTextLines": 1,
+  "diagnostic.enableMessage": "jump",
+  "diagnostic.errorSign": "•",
+  "diagnostic.warningSign": "•",
+  "diagnostic.infoSign": "•",
+  "diagnostic.hintSign": "•",
+  "coc.preferences.formatOnType": true,
+  "javascript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
+  "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
+  "prettier.requireConfig": true
 }
