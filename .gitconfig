@@ -32,8 +32,6 @@
 	branch = false
 [rebase]
 	autoSquash = true
-[log]
-	date = relative
 [credential]
 	helper = osxkeychain
 [mergetool]
