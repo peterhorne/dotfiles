@@ -33,7 +33,6 @@ Plug 'dhruvasagar/vim-prosession'
 " Plug 'francoiscabrol/ranger.vim'
 " Plug 'liuchengxu/vim-which-key'
 Plug 'meain/vim-printer'
-Plug 'psliwka/vim-smoothie'
 
 call plug#end()
 
