@@ -116,16 +116,34 @@ hi clear CursorLineNR
 hi link CursorLineNR GruvboxYellow
 
 " Status line
-" (StatusLine(NC) has ctermbg set to prevent fillchars being overridden
+" StatusLine and StatusLineNC have different ctermbg
+" set to prevent vim replacing fillchars with "^^^"
 hi clear StatusLine
 hi clear StatusLineNC
 hi clear VertSplit
-hi StatusLine ctermbg=black guifg=#7c6f64
-hi StatusLineNC ctermbg=white guifg=#7c6f64
-hi VertSplit guifg=#7c6f64
+hi StatusLine ctermbg=black guifg=#665c54
+hi StatusLineNC ctermbg=white guifg=#665c54
+hi VertSplit guifg=#665c54
+hi link User1 CursorLineNR
+hi User2 guifg=#7c6f64
+set fillchars=stl:\─,stlnc:\─,vert:\│,eob:¬
 
-set statusline=%=\ %f\ %h%w%m%r\ %=
-set fillchars=stl:-,stlnc:-,vert:\|,eob:¬
+function! s:active_statusline()
+  setlocal statusline=\─\─\ %1*%f\ %h%w%m%r%*
+endfunction
+
+function! s:inactive_statusline()
+  setlocal statusline=\─\─\ %2*%f\ %h%w%m%r%*
+endfunction
+
+augroup statusline
+    autocmd!
+    autocmd WinEnter * call <SID>active_statusline()
+    autocmd WinLeave * call <SID>inactive_statusline()
+augroup END
+
+call <SID>active_statusline()
+
 
 " Don't skip wrapped lines
 nnoremap j gj
@@ -200,7 +218,7 @@ let g:fzf_colors =
   \ 'header':  ['fg', 'Comment'] }
 
 function! s:fzf_statusline()
-  setlocal statusline=·
+  setlocal statusline=\ 
 endfunction
 
 autocmd! User FzfStatusLine call <SID>fzf_statusline()
