@@ -28,6 +28,8 @@ Plug 'tpope/vim-unimpaired'
 Plug 'wellle/targets.vim'
 Plug 'meain/vim-printer'
 
+Plug 'fxn/vim-monochrome'
+
 call plug#end()
 
 call coc#add_extension('coc-tsserver', 'coc-json', 'coc-rls', 'coc-css', 'coc-prettier', 'coc-solargraph', 'coc-elixir')
@@ -35,9 +37,7 @@ call coc#add_extension('coc-tsserver', 'coc-json', 'coc-rls', 'coc-css', 'coc-pr
 
 " Make vim pretty
 set termguicolors
-set background=dark
-colorscheme gruvbox
-let g:gruvbox_italic=1
+colorscheme monochrome
 syntax enable
 
 " Enable mouse support (useful for resizing windows)
@@ -195,22 +195,6 @@ let NERDTreeQuitOnOpen=1
 let NERDTreeHijackNetrw=1
 
 " FZF
-" Customize fzf colors to match your color scheme
-let g:fzf_colors =
-\ { 'fg':      ['fg', 'GruvboxFg3'],
-  \ 'bg':      ['bg', 'Normal'],
-  \ 'hl':      ['fg', 'Comment'],
-  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
-  \ 'bg+':     ['bg', 'GruvboxBg0'],
-  \ 'hl+':     ['fg', 'GruvboxBlue'],
-  \ 'info':    ['fg', 'PFolded'],
-  \ 'border':  ['fg', 'Ignore'],
-  \ 'prompt':  ['fg', 'Normal'],
-  \ 'pointer': ['fg', 'GruvboxPurple'],
-  \ 'marker':  ['fg', 'Keyword'],
-  \ 'spinner': ['fg', 'Label'],
-  \ 'header':  ['fg', 'Comment'] }
-
 function! s:fzf_statusline()
   setlocal statusline=\ 
 endfunction
