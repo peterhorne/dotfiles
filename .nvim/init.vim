@@ -180,11 +180,6 @@ noremap L $
 " Highlight matching parenthesis
 hi! link MatchParen WarningMsg
 
-" Configure syntax
-let g:polyglot_disabled = ['markdown']
-let g:markdown_syntax_conceal = 0
-let g:markdown_fenced_languages = ['typescript']
-
 " NERDTree
 map g~ :e .<CR>
 map g. :e %:h<CR>
