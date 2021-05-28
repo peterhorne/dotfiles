@@ -42,14 +42,11 @@ bindkey "^[3;5~" delete-char
 # Setup prompt
 setopt prompt_subst
 if [[ "$TERM" != "dumb" ]] && [[ "$DISABLE_LS_COLORS" != "true" ]]; then
-  function git_prompt_info() {
-    ref=$(command git symbolic-ref HEAD 2> /dev/null) || \
-    ref=$(command git rev-parse --short HEAD 2> /dev/null) || return
-    echo " %{$fg[cyan]%}${ref#refs/heads/}$ZSH_THEME_GIT_PROMPT_SUFFIX"
-  }
-  PROMPT='%{$fg[blue]%}%~$(git_prompt_info)%{$reset_color%} '
+  PROMPT='%{$fg_bold[yellow]%}$%{$reset_color%} '
+  RPROMPT='%~'
 else
-  PROMPT='%c$(git_prompt_info)'
+  PROMPT='$ '
+  RPROMPT='%~'
 fi
 
 # set iterm2 tab titles to current dir
