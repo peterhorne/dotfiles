@@ -26,12 +26,6 @@ Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'wellle/targets.vim'
-
-" Plug 'gillyb/stable-windows'
-Plug 'tpope/vim-obsession'
-Plug 'dhruvasagar/vim-prosession'
-" Plug 'francoiscabrol/ranger.vim'
-" Plug 'liuchengxu/vim-which-key'
 Plug 'meain/vim-printer'
 
 call plug#end()
@@ -320,11 +314,6 @@ noremap <silent> <Plug>CycleFallbackPrev <c-x>
 
 " Show line numbers
 set nu
-
-" vim-procession
-nnoremap <leader>p :call fzf#run({'source': prosession#ListSessions(), 'sink': 'Prosession', 'down': '30%'})<cr>
-let g:prosession_on_startup = 0
-let g:prosession_default_session = 0
 
 " vim-smoothie
 let g:smoothie_base_speed = 16
