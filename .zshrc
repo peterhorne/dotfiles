@@ -60,9 +60,7 @@ precmd() {
 # ^Z to foreground the last suspended job.
 foreground-current-job() { fg; }
 zle -N foreground-current-job
-bindkey -M emacs '^z' foreground-current-job
-bindkey -M viins '^z' foreground-current-job
-bindkey -M vicmd '^z' foreground-current-job
+bindkey "^z" foreground-current-job
 
 [ -f $HOME/.local-exports ] && source $HOME/.local-exports
 
@@ -75,16 +73,8 @@ source "$fasd_cache"
 unset fasd_cache
 alias j='fasd_cd -d'
 
-# chruby
-[ -f /usr/local/opt/chruby/share/chruby/chruby.sh ] && source /usr/local/opt/chruby/share/chruby/chruby.sh
-[ -f /usr/local/opt/chruby/share/chruby/auto.sh ] && source /usr/local/opt/chruby/share/chruby/auto.sh
-
-# rustup
-export PATH="$HOME/.cargo/bin:$PATH"
-
 # git
 alias cpg='git rev-parse HEAD | tr -d "\n" | pbcopy'
-alias cpgp='cpg && git push'
 alias git=hub
 
 # direnv
@@ -97,9 +87,6 @@ export PATH="$GOPATH/bin:$PATH"
 
 # latex
 export PATH="/Library/TeX/texbin:$PATH"
-
-# mongodb
-export PATH="/usr/local/opt/mongodb@3.4/bin:$PATH"
 
 # FZF
 export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
