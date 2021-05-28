@@ -14,11 +14,11 @@
 	up = !sh -c 'git fetch && git rebase refs/remotes/origin/HEAD'
 	lg = log --graph --oneline --decorate
   fixup = !sh -c 'git add \"$@\" && git commit --fixup $(git rev-list -1 HEAD -- \"$@\")' -
-  done = !sh -c 'git checkout master && git branch -d \"$@\" && git up && git fetch -p' -
+  done = !sh -c 'git checkout $(basename $(git symbolic-ref refs/remotes/origin/HEAD)) && git branch -d \"$@\" && git up && git fetch -p' -
   squash = !sh -c 'GIT_SEQUENCE_EDITOR=: git rebase -i \"$1\" --autosquash' -
   amend = commit --amend
   wip = commit --no-verify -m WIP
-  isolate = !sh -c 'git checkout -b \"$2\" origin/master --no-track && git cherry-pick \"$1\"' -
+  isolate = !sh -c 'git checkout -b \"$2\" refs/remotes/origin/HEAD --no-track && git cherry-pick \"$1\"' -
   shelve = !sh -c 'git branch -m \"$1\" archive/\"$1\"' -
   ship = pull-request -op
 [mergetool "vim_mergetool"]
