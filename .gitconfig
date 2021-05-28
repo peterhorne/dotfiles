@@ -11,7 +11,7 @@
 	tool = vim_mergetool
 	conflictstyle = diff3
 [alias]
-	up = pull --rebase
+	up = !sh -c 'git fetch && git rebase refs/remotes/origin/HEAD'
 	lg = log --graph --oneline --decorate
   fixup = !sh -c 'git add \"$@\" && git commit --fixup $(git rev-list -1 HEAD -- \"$@\")' -
   done = !sh -c 'git checkout master && git branch -d \"$@\" && git up && git fetch -p' -
