@@ -304,4 +304,5 @@ let g:vim_printer_items = {
   \ 'javascriptreact': 'console.log("== {$}", {$})',
   \ 'typescript': 'console.log("== {$}", {$})',
   \ 'typescriptreact': 'console.log("== {$}", {$})',
+  \ 'ruby': 'puts "== {$}", {$}',
 \ }
