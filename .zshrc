@@ -1,8 +1,7 @@
 autoload -U compinit && compinit
 
 autoload -U colors && colors
-export LSCOLORS="Gxfxcxdxbxegedabagacad"
-alias ls='ls -G'
+alias ls='ls -p'
 setopt auto_cd
 bindkey '^r' history-incremental-search-backward
 
@@ -87,6 +86,7 @@ export PATH="/Library/TeX/texbin:$PATH"
 
 # FZF
 export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
+export FZF_DEFAULT_OPTS='--color bw'
 export FZF_CTRL_T_COMMAND=$FZF_DEFAULT_COMMAND
 export FZF_CTRL_R_OPTS='--reverse'
 source "/usr/local/opt/fzf/shell/key-bindings.zsh"
