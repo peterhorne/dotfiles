@@ -41,8 +41,8 @@ bindkey "^[3;5~" delete-char
 # Setup prompt
 setopt prompt_subst
 if [[ "$TERM" != "dumb" ]] && [[ "$DISABLE_LS_COLORS" != "true" ]]; then
-  PROMPT='%{$fg_bold[yellow]%}$%{$reset_color%} '
-  RPROMPT='%~'
+  PROMPT='%{$fg[cyan]%}$%{$reset_color%} '
+  RPROMPT='%{$fg[cyan]%}%~%{$reset_color%}'
 else
   PROMPT='$ '
   RPROMPT='%~'

@@ -10,7 +10,6 @@ Plug 'easymotion/vim-easymotion'
 Plug 'junegunn/fzf.vim'
 Plug 'machakann/vim-highlightedyank'
 Plug 'michaeljsmith/vim-indent-object'
-Plug 'morhetz/gruvbox'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'samoshkin/vim-mergetool'
@@ -28,6 +27,7 @@ Plug 'tpope/vim-unimpaired'
 Plug 'wellle/targets.vim'
 Plug 'meain/vim-printer'
 
+Plug 'altercation/vim-colors-solarized'
 Plug 'fxn/vim-monochrome'
 
 call plug#end()
@@ -36,9 +36,9 @@ call coc#add_extension('coc-tsserver', 'coc-json', 'coc-rls', 'coc-css', 'coc-pr
 
 
 " Make vim pretty
-set termguicolors
-colorscheme monochrome
 syntax enable
+set background=light
+colorscheme solarized
 
 " Enable mouse support (useful for resizing windows)
 set mouse=a
@@ -105,21 +105,21 @@ augroup CursorLineOnlyInActiveWindow
   autocmd WinLeave * setlocal nocursorline
 augroup END
 
-hi clear CursorLine
-hi clear CursorLineNR
-hi link CursorLineNR GruvboxYellow
+" Disable CursorLine for better performance
+" hi clear CursorLine
+hi clear LineNr
+hi link LineNr Comment
+hi clear CursorLineNr
+hi clear SignColumn
 
 " Status line
-" StatusLine and StatusLineNC have different ctermbg
+" StatusLine and StatusLineNC have different guibg
 " set to prevent vim replacing fillchars with "^^^"
 hi clear StatusLine
 hi clear StatusLineNC
 hi clear VertSplit
-hi StatusLine ctermbg=black guifg=#665c54
-hi StatusLineNC ctermbg=white guifg=#665c54
-hi VertSplit guifg=#665c54
-hi link User1 CursorLineNR
-hi User2 guifg=#7c6f64
+hi StatusLine guibg=black
+hi StatusLineNC guibg=white
 set fillchars=stl:\─,stlnc:\─,vert:\│,eob:¬
 
 function! s:active_statusline()
