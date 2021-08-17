@@ -26,9 +26,7 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'wellle/targets.vim'
 Plug 'meain/vim-printer'
-
-Plug 'altercation/vim-colors-solarized'
-Plug 'fxn/vim-monochrome'
+Plug 'morhetz/gruvbox'
 
 call plug#end()
 
@@ -37,8 +35,8 @@ call coc#add_extension('coc-tsserver', 'coc-json', 'coc-rls', 'coc-css', 'coc-pr
 
 " Make vim pretty
 syntax enable
-set background=light
-colorscheme solarized
+set background=dark
+colorscheme gruvbox
 
 " Enable mouse support (useful for resizing windows)
 set mouse=a
