@@ -71,7 +71,6 @@ alias j='fasd_cd -d'
 
 # git
 alias cpg='git rev-parse HEAD | tr -d "\n" | pbcopy'
-alias git=hub
 
 # direnv
 export DIRENV_LOG_FORMAT=""
