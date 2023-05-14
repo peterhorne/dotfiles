@@ -1,5 +1,5 @@
 [user]
-	name = Peter Horne
+	name = Peter Horne-Khan
 [core]
     excludesfile = /Users/peter/.gitignore
     editor = nvim
