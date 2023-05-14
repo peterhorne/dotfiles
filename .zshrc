@@ -117,4 +117,4 @@ if [ -f '/usr/local/bin/google-cloud-sdk/completion.zsh.inc' ]; then source '/us
 export DISABLE_OPENCOLLECTIVE=true
 
 # asdf
-[ -f /usr/local/opt/asdf/asdf.sh ] && source /usr/local/opt/asdf/asdf.sh
+[ -f /usr/local/opt/asdf/libexec/asdf.sh ] && source /usr/local/opt/asdf/libexec/asdf.sh
