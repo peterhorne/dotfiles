@@ -2,8 +2,6 @@
 
 ABSPATH=$(cd "$(dirname "$0")"; pwd)
 
-ln -s $ABSPATH/.ackrc ~/.ackrc
-ln -s $ABSPATH/.agignore ~/.agignore
 ln -s $ABSPATH/.ctags ~/.ctags
 ln -s $ABSPATH/.gitconfig ~/.gitconfig
 ln -s $ABSPATH/.hushlogin ~/.hushlogin
