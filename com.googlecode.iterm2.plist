@@ -19,7 +19,7 @@
 	<key>CommandSelection</key>
 	<true/>
 	<key>CompactMinimalTabBarHeight</key>
-	<real>38</real>
+	<real>32</real>
 	<key>Control</key>
 	<integer>1</integer>
 	<key>CopyLastNewline</key>
