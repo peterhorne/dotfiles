@@ -27,10 +27,11 @@ Plug 'tpope/vim-unimpaired'
 Plug 'wellle/targets.vim'
 Plug 'meain/vim-printer'
 Plug 'morhetz/gruvbox'
+Plug 'wuelnerdotexe/vim-astro', {'branch':'main'}
 
 call plug#end()
 
-call coc#add_extension('coc-tsserver', 'coc-json', 'coc-rls', 'coc-css', 'coc-prettier', 'coc-solargraph', 'coc-elixir')
+call coc#add_extension('coc-tsserver', 'coc-json', 'coc-rls', 'coc-css', 'coc-prettier', 'coc-solargraph', 'coc-elixir', '@yaegassy/coc-astro')
 
 
 " Make vim pretty
@@ -237,7 +238,7 @@ set noshowmode
 " Use <c-space> for trigger completion.
 inoremap <silent><expr> <c-space> coc#refresh()
 
-autocmd FileType typescript,typescriptreact,javascript,javascriptreact,ruby,elixir
+autocmd FileType typescript,typescriptreact,javascript,javascriptreact,ruby,elixir,astro
       \ nmap <buffer><silent> [c <Plug>(coc-diagnostic-prev)|
       \ nmap <buffer><silent> ]c <Plug>(coc-diagnostic-next)|
       \ nmap <buffer><silent> <c-]> <Plug>(coc-definition)|
@@ -246,7 +247,7 @@ autocmd FileType typescript,typescriptreact,javascript,javascriptreact,ruby,elix
       \ nmap <buffer><silent> <c-w><c-]> :call CocAction('jumpDefinition', 'vsplit')<CR>|
       \ nmap <buffer><silent> gt <Plug>(coc-type-definition)|
       \ nmap <buffer><silent> gi <Plug>(coc-implementation)|
-      \ nmap <buffer><silent> gr <Plug>(coc-references)|
+      \ nmap <buffer><silent> gr <Plug>(coc-references-used)|
       \ nmap <buffer><silent> K :call CocAction('doHover')<CR>|
       \ nmap <buffer><silent> ge <Plug>(coc-diagnostic-info)|
       \ vmap ga <Plug>(coc-codeaction-selected)|
@@ -302,5 +303,6 @@ let g:vim_printer_items = {
   \ 'javascriptreact': 'console.log("== {$}", {$})',
   \ 'typescript': 'console.log("== {$}", {$})',
   \ 'typescriptreact': 'console.log("== {$}", {$})',
+  \ 'astro': 'console.log("== {$}", {$})',
   \ 'ruby': 'puts "== {$}", {$}',
 \ }
