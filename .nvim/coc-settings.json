@@ -9,5 +9,6 @@
   "coc.preferences.formatOnType": true,
   "javascript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
   "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
-  "prettier.requireConfig": true
+  "prettier.requireConfig": true,
+  "suggest.noselect": true
 }
