@@ -137,7 +137,6 @@ augroup END
 
 call <SID>active_statusline()
 
-
 " Don't skip wrapped lines
 nnoremap j gj
 nnoremap gj j
@@ -175,6 +174,9 @@ nnoremap ! :!
 " Jump to start/end line
 noremap H ^
 noremap L $
+
+" Register ivan filetype
+autocmd BufRead,BufNewFile *.iv set filetype=ivan
 
 " Highlight matching parenthesis
 hi! link MatchParen WarningMsg
@@ -238,7 +240,7 @@ set noshowmode
 " Use <c-space> for trigger completion.
 inoremap <silent><expr> <c-space> coc#refresh()
 
-autocmd FileType typescript,typescriptreact,javascript,javascriptreact,ruby,elixir,astro
+autocmd FileType typescript,typescriptreact,javascript,javascriptreact,ruby,elixir,astro,ivan
       \ nmap <buffer><silent> [c <Plug>(coc-diagnostic-prev)|
       \ nmap <buffer><silent> ]c <Plug>(coc-diagnostic-next)|
       \ nmap <buffer><silent> <c-]> <Plug>(coc-definition)|

@@ -10,5 +10,20 @@
   "javascript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
   "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
   "prettier.requireConfig": true,
-  "suggest.noselect": true
+  "suggest.noselect": true,
+  "languageserver": {
+    "ivan": {
+      "command": "node",
+      "args": ["${userHome}/src/ls-ivan/out/build/index.js", "--stdio"],
+      "filetypes": ["ivan"],
+      "initializationOptions": {
+      },
+      "settings": {
+        "validate": true
+      }
+    }
+  },
+  "[ivan]": {
+    "semanticTokens.enable": true,
+  }
 }
