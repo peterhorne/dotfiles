@@ -42,3 +42,5 @@
 	driver = npx npm-merge-driver merge %A %O %B %P
 [pull]
 	rebase = true
+[init]
+	defaultBranch = main
