@@ -2745,6 +2745,8 @@
 	<false/>
 	<key>SuppressRestartAnnouncement</key>
 	<true/>
+	<key>SwapFindNextPrevious</key>
+	<false/>
 	<key>SwitchTabModifier</key>
 	<integer>4</integer>
 	<key>SwitchWindowModifier</key>
