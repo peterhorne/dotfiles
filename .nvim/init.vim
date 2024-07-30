@@ -253,7 +253,8 @@ autocmd FileType typescript,typescriptreact,javascript,javascriptreact,ruby,elix
       \ nmap <buffer><silent> K :call CocAction('doHover')<CR>|
       \ nmap <buffer><silent> ge <Plug>(coc-diagnostic-info)|
       \ vmap ga <Plug>(coc-codeaction-selected)|
-      \ nmap ga <Plug>(coc-codeaction)
+      \ nmap ga <Plug>(coc-codeaction)|
+      \ nmap gn <Plug>(coc-rename)
       " \ nmap <silent> <C-d> <Plug>(coc-range-select)|
       " \ xmap <silent> <C-d> <Plug>(coc-range-select)
 
