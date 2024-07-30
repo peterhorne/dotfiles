@@ -121,5 +121,5 @@ if [ -f '/usr/local/bin/google-cloud-sdk/completion.zsh.inc' ]; then source '/us
 # npm is a clusterfuck
 export DISABLE_OPENCOLLECTIVE=true
 
-# asdf
-[ -f /usr/local/opt/asdf/libexec/asdf.sh ] && source /usr/local/opt/asdf/libexec/asdf.sh
+# mise
+[ -f /usr/local/bin/mise ] && eval "$(/usr/local/bin/mise activate zsh)"
