@@ -1,12 +1,12 @@
 call plug#begin('~/.local/share/nvim/plugged')
 
-Plug '/usr/local/opt/fzf'
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'Olical/vim-enmasse'
 Plug 'Raimondi/delimitMate'
 Plug 'bogado/file-line'
 Plug 'bootleq/vim-cycle'
 Plug 'easymotion/vim-easymotion'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'machakann/vim-highlightedyank'
 Plug 'michaeljsmith/vim-indent-object'
