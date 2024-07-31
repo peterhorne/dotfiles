@@ -123,3 +123,6 @@ export DISABLE_OPENCOLLECTIVE=true
 
 # mise
 [ -f /usr/local/bin/mise ] && eval "$(/usr/local/bin/mise activate zsh)"
+
+# ripgrep
+export RIPGREP_CONFIG_PATH="$HOME/.ripgreprc"

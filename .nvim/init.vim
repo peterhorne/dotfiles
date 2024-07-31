@@ -224,7 +224,7 @@ let delimitMate_expand_cr = 2
 let delimitMate_expand_space = 1
 
 " Use ripgrep
-set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
+set grepprg=rg\ --vimgrep\ --smart-case\ --max-columns=0
 nnoremap <leader>r :Rg 
 
 " highlighted-yank
