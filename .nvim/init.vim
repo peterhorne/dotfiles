@@ -177,6 +177,7 @@ noremap L $
 
 " Register ivan filetype
 autocmd BufRead,BufNewFile *.iv set filetype=ivan
+autocmd FileType ivan setlocal commentstring=;%s
 
 " Highlight matching parenthesis
 hi! link MatchParen WarningMsg
