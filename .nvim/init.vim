@@ -179,6 +179,10 @@ noremap L $
 autocmd BufRead,BufNewFile *.iv set filetype=ivan
 autocmd FileType ivan setlocal commentstring=;%s
 
+" Register LLVM IR filetype
+autocmd BufRead,BufNewFile *.ll set filetype=llvm
+autocmd FileType llvm setlocal commentstring=;%s
+
 " Highlight matching parenthesis
 hi! link MatchParen WarningMsg
 
