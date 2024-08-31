@@ -14,7 +14,7 @@
   "languageserver": {
     "ivan": {
       "command": "node",
-      "args": ["${userHome}/src/ls-ivan/out/build/index.js", "--stdio"],
+      "args": ["${userHome}/src/ivan-lang/out/ls/index.js", "--stdio"],
       "filetypes": ["ivan"],
       "initializationOptions": {
       },
