@@ -9,12 +9,13 @@ Plug 'easymotion/vim-easymotion'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'machakann/vim-highlightedyank'
+Plug 'meain/vim-printer'
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'ntpeters/vim-better-whitespace'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'samoshkin/vim-mergetool'
 Plug 'scrooloose/nerdtree'
-Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-endwise'
@@ -25,19 +26,32 @@ Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'wellle/targets.vim'
-Plug 'meain/vim-printer'
-Plug 'morhetz/gruvbox'
 Plug 'wuelnerdotexe/vim-astro', {'branch':'main'}
 
 call plug#end()
+let &runtimepath.=',~/src/colours'
 
 call coc#add_extension('coc-tsserver', 'coc-json', 'coc-rls', 'coc-css', 'coc-prettier', 'coc-solargraph', 'coc-elixir', '@yaegassy/coc-astro')
 
+lua << EOF
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "markdown", "markdown_inline", "typescript", "javascript", "ruby" },
+  auto_install = true,
+
+  highlight = {
+    enable = true,
+    additional_vim_regex_highlighting = false,
+  },
+}
+
+vim.api.nvim_set_hl(0, "@constructor.typescript", { link = "Identifier" })
+EOF
+
 
 " Make vim pretty
+" set termguicolors
 syntax enable
-set background=dark
-colorscheme gruvbox
+colorscheme phk
 
 " Enable mouse support (useful for resizing windows)
 set mouse=a
@@ -104,21 +118,14 @@ augroup CursorLineOnlyInActiveWindow
   autocmd WinLeave * setlocal nocursorline
 augroup END
 
-" Disable CursorLine for better performance
-" hi clear CursorLine
-hi clear LineNr
-hi link LineNr Comment
-hi clear CursorLineNr
-hi clear SignColumn
+hi clear CursorLine
+
+" hi clear LineNr
+" hi link LineNr Comment
+" hi clear CursorLineNr
+" hi clear SignColumn
 
 " Status line
-" StatusLine and StatusLineNC have different guibg
-" set to prevent vim replacing fillchars with "^^^"
-hi clear StatusLine
-hi clear StatusLineNC
-hi clear VertSplit
-hi StatusLine guibg=black
-hi StatusLineNC guibg=white
 set fillchars=stl:\─,stlnc:\─,vert:\│,eob:¬
 
 function! s:active_statusline()
@@ -184,7 +191,7 @@ autocmd BufRead,BufNewFile *.ll set filetype=llvm
 autocmd FileType llvm setlocal commentstring=;%s
 
 " Highlight matching parenthesis
-hi! link MatchParen WarningMsg
+" hi! link MatchParen WarningMsg
 
 " NERDTree
 map g~ :e .<CR>
@@ -233,11 +240,9 @@ set grepprg=rg\ --vimgrep\ --smart-case\ --max-columns=0
 nnoremap <leader>r :Rg 
 
 " highlighted-yank
-let g:highlightedyank_highlight_duration = 250
-hi HighlightedyankRegion guibg=#504945
-
-" indentLine
-let g:indentLine_char = '│'
+let g:highlightedyank_highlight_duration = 200
+hi link HighlightedyankRegion Search
+autocmd ColorScheme phk highlight link HighlightedyankRegion Search
 
 " Hide mode
 set noshowmode
@@ -268,11 +273,11 @@ autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 
 nmap <silent> <leader>f :call CocActionAsync('runCommand', 'prettier.formatFile')<CR>
 
-hi SignColumn guibg=bg
-hi def link CocErrorSign GruvboxRed
-hi def link CocWarningSign GruvboxOrange
-hi def link CocInfoSign GruvboxYellow
-hi def link CocHintSign GruvboxPurple
+" hi SignColumn guibg=bg
+" hi def link CocErrorSign GruvboxRed
+" hi def link CocWarningSign GruvboxOrange
+" hi def link CocInfoSign GruvboxYellow
+" hi def link CocHintSign GruvboxPurple
 
 " targets.vim
 autocmd User targets#mappings#user call targets#mappings#extend({

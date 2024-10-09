@@ -41,8 +41,8 @@ bindkey "^[3;5~" delete-char
 # Setup prompt
 setopt prompt_subst
 if [[ "$TERM" != "dumb" ]] && [[ "$DISABLE_LS_COLORS" != "true" ]]; then
-  PROMPT='%{$fg[cyan]%}$%{$reset_color%} '
-  RPROMPT='%{$fg[cyan]%}%~%{$reset_color%}'
+  PROMPT='%{$fg[blue]%}$%{$reset_color%} '
+  RPROMPT='%{$fg[blue]%}%~%{$reset_color%}'
 else
   PROMPT='$ '
   RPROMPT='%~'
@@ -87,7 +87,7 @@ export PATH="/Library/TeX/texbin:$PATH"
 export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
 # export FZF_DEFAULT_OPTS='--color bw'
 
-export FZF_DEFAULT_OPTS="--color=bg+:237,bg:235,border:0,spinner:167,hl:245,fg:223,header:245,info:108,pointer:167,marker:167,fg+:223,preview-bg:239,prompt:167,hl+:167"
+# export FZF_DEFAULT_OPTS="--color=bg+:237,bg:235,border:0,spinner:167,hl:245,fg:223,header:245,info:108,pointer:167,marker:167,fg+:223,preview-bg:239,prompt:167,hl+:167"
 export FZF_CTRL_T_COMMAND=$FZF_DEFAULT_COMMAND
 export FZF_CTRL_R_OPTS='--reverse'
 source "/usr/local/opt/fzf/shell/key-bindings.zsh"
