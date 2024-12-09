@@ -1859,13 +1859,13 @@
 				<key>Alpha Component</key>
 				<real>1</real>
 				<key>Blue Component</key>
-				<real>0.43596169352531433</real>
+				<real>0.43529411764705883</real>
 				<key>Color Space</key>
 				<string>P3</string>
 				<key>Green Component</key>
-				<real>0.43596172332763672</real>
+				<real>0.43529411764705883</real>
 				<key>Red Component</key>
-				<real>0.43596169352531433</real>
+				<real>0.43529411764705883</real>
 			</dict>
 			<key>Ansi 9 Color</key>
 			<dict>
@@ -2005,7 +2005,7 @@
 			<key>Draw Powerline Glyphs</key>
 			<false/>
 			<key>Faint Text Alpha</key>
-			<real>0.50066511207651865</real>
+			<real>0.5</real>
 			<key>Flashing Bell</key>
 			<false/>
 			<key>Foreground Color</key>
@@ -2420,13 +2420,13 @@
 				<key>Alpha Component</key>
 				<real>1</real>
 				<key>Blue Component</key>
-				<real>0.0</real>
+				<real>0.49019607843137253</real>
 				<key>Color Space</key>
 				<string>P3</string>
 				<key>Green Component</key>
-				<real>1</real>
+				<real>0.81960784313725488</real>
 				<key>Red Component</key>
-				<real>1</real>
+				<real>0.96862745098039216</real>
 			</dict>
 			<key>Minimum Contrast</key>
 			<real>0.0</real>
