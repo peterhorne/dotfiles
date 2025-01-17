@@ -1807,13 +1807,13 @@
 				<key>Alpha Component</key>
 				<real>1</real>
 				<key>Blue Component</key>
-				<real>0.80000001192092896</real>
+				<real>0.74117647058823533</real>
 				<key>Color Space</key>
 				<string>P3</string>
 				<key>Green Component</key>
-				<real>0.47450980544090271</real>
+				<real>0.63921568627450975</real>
 				<key>Red Component</key>
-				<real>0.25490197539329529</real>
+				<real>0.60392156862745094</real>
 			</dict>
 			<key>Ansi 5 Color</key>
 			<dict>
@@ -1889,13 +1889,13 @@
 				<key>Alpha Component</key>
 				<real>1</real>
 				<key>Blue Component</key>
-				<real>1</real>
+				<real>0.12941176470588237</real>
 				<key>Color Space</key>
 				<string>P3</string>
 				<key>Green Component</key>
-				<real>1</real>
+				<real>0.10588235294117647</real>
 				<key>Red Component</key>
-				<real>0.99999994039535522</real>
+				<real>0.11764705882352941</real>
 			</dict>
 			<key>Background Image Is Tiled</key>
 			<false/>
@@ -1954,13 +1954,13 @@
 				<key>Alpha Component</key>
 				<real>1</real>
 				<key>Blue Component</key>
-				<real>0.0</real>
+				<real>0.67843137254901964</real>
 				<key>Color Space</key>
 				<string>P3</string>
 				<key>Green Component</key>
-				<real>0.0</real>
+				<real>0.75294117647058822</real>
 				<key>Red Component</key>
-				<real>0.0</real>
+				<real>0.81176470588235294</real>
 			</dict>
 			<key>Cursor Guide Color</key>
 			<dict>
@@ -1980,13 +1980,13 @@
 				<key>Alpha Component</key>
 				<real>1</real>
 				<key>Blue Component</key>
-				<real>0.95686274766921997</real>
+				<real>0.12941176470588237</real>
 				<key>Color Space</key>
 				<string>P3</string>
 				<key>Green Component</key>
-				<real>0.95686274766921997</real>
+				<real>0.10588235294117647</real>
 				<key>Red Component</key>
-				<real>0.95686274766921997</real>
+				<real>0.11764705882352941</real>
 			</dict>
 			<key>Cursor Type</key>
 			<integer>2</integer>
@@ -2005,7 +2005,7 @@
 			<key>Draw Powerline Glyphs</key>
 			<false/>
 			<key>Faint Text Alpha</key>
-			<real>0.5</real>
+			<real>0.50390625</real>
 			<key>Flashing Bell</key>
 			<false/>
 			<key>Foreground Color</key>
@@ -2013,13 +2013,13 @@
 				<key>Alpha Component</key>
 				<real>1</real>
 				<key>Blue Component</key>
-				<real>0.0</real>
+				<real>0.67843137254901964</real>
 				<key>Color Space</key>
 				<string>P3</string>
 				<key>Green Component</key>
-				<real>0.0</real>
+				<real>0.75294117647058822</real>
 				<key>Red Component</key>
-				<real>0.0</real>
+				<real>0.81176470588235294</real>
 			</dict>
 			<key>Guid</key>
 			<string>9F3116CE-D4F0-4CBE-852A-095FE8B772CA</string>
@@ -2429,7 +2429,7 @@
 				<real>0.96862745098039216</real>
 			</dict>
 			<key>Minimum Contrast</key>
-			<real>0.0</real>
+			<real>0.29751488095238093</real>
 			<key>Mouse Reporting</key>
 			<true/>
 			<key>Name</key>
@@ -2504,7 +2504,7 @@
 			<key>Silence Bell</key>
 			<false/>
 			<key>Smart Cursor Color</key>
-			<true/>
+			<false/>
 			<key>Smart Selection Rules</key>
 			<array>
 				<dict>
@@ -2634,12 +2634,14 @@
 			<false/>
 			<key>Use Canonical Parser</key>
 			<false/>
+			<key>Use Cursor Guide</key>
+			<false/>
 			<key>Use Italic Font</key>
 			<true/>
 			<key>Use Non-ASCII Font</key>
 			<false/>
 			<key>Vertical Spacing</key>
-			<real>1</real>
+			<real>1.1299999999999999</real>
 			<key>Visual Bell</key>
 			<false/>
 			<key>Window Type</key>
