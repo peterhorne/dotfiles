@@ -241,8 +241,6 @@ nnoremap <leader>r :Rg
 
 " highlighted-yank
 let g:highlightedyank_highlight_duration = 200
-hi link HighlightedyankRegion Search
-autocmd ColorScheme phk highlight link HighlightedyankRegion Search
 
 " Hide mode
 set noshowmode
@@ -319,3 +317,10 @@ let g:vim_printer_items = {
   \ 'astro': 'console.log("== {$}", {$})',
   \ 'ruby': 'puts "== {$}", {$}',
 \ }
+
+" Show all matches while searching
+augroup vimrc-incsearch-highlight
+  autocmd!
+  autocmd CmdlineEnter /,\? let g:hlsearch_before_search = &hlsearch | set hlsearch
+  autocmd CmdlineLeave /,\? let &hlsearch = g:hlsearch_before_search
+augroup END
